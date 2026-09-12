@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Solar PPM Demo - ผู้นำผลิตและติดตั้งระบบโซลาร์เซลล์ครบวงจร</title>
+  <title>DJP FUTURE ENERGY - ผู้นำด้านอุปกรณ์ SOLAR ระดับชั้นนำ</title>
   <!-- Tailwind CSS & Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: { kanit: ['Kanit', 'sans-serif'] },
           colors: {
-            brand: { navy: '#0a1b3f', blue: '#1e3e62', orange: '#ff6500', yellow: '#fae300' }
+            brand: { navy: '#111827', blue: '#1f2937', orange: '#eab308', yellow: '#facc15' } // ปรับเป็นโทน ดำ-เหลืองทอง ของ DJP
           }
         }
       }
@@ -27,35 +27,39 @@
     .no-scroll { overflow: hidden; }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-orange selection:text-white">
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-yellow selection:text-brand-navy">
 
   <!-- ==============================
        1. Mobile Menu Overlay
        ============================== -->
   <div id="mobileMenu" class="fixed inset-0 z-[100] hidden flex-col bg-white overflow-y-auto">
-    <!-- Header เมนู (สีน้ำเงินเข้ม) -->
+    <!-- Header เมนู -->
     <div class="bg-brand-navy text-white flex justify-between items-center px-4 h-[68px]">
       <div class="flex items-center space-x-2">
-        <svg class="w-8 h-8 text-brand-yellow" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+        <div class="w-8 h-8 bg-brand-yellow rounded-full flex items-center justify-center text-brand-navy font-black text-xl italic">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
         <div>
-          <span class="text-xl font-bold leading-none block">SOLAR</span>
-          <span class="text-xl font-bold leading-none block">PPM</span>
+          <span class="text-xl font-extrabold leading-none block tracking-wide">DJP</span>
+          <span class="text-[10px] font-semibold leading-none block tracking-widest uppercase">Future Energy</span>
         </div>
       </div>
-      <button id="closeMenuBtn" class="text-white hover:text-gray-300 p-2">
+      <button id="closeMenuBtn" class="text-brand-yellow hover:text-white p-2 transition">
         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
       </button>
     </div>
     <!-- รายการลิงก์ -->
     <div class="flex flex-col text-[15px] font-medium text-slate-700">
-      <a href="#" class="px-5 py-4 border-b border-slate-100 text-brand-navy font-bold">หน้าแรก</a>
+      <a href="#" class="px-5 py-4 border-b border-slate-100 text-brand-navy font-bold" onclick="closeMenu()">หน้าแรก</a>
       <a href="#about" class="px-5 py-4 border-b border-slate-100" onclick="closeMenu()">เกี่ยวกับเรา</a>
       <a href="#services" class="px-5 py-4 border-b border-slate-100" onclick="closeMenu()">ติดตั้งโซล่าเซลล์</a>
       <a href="#pv-panel" class="px-5 py-4 border-b border-slate-100" onclick="closeMenu()">แผงโซล่าเซลล์</a>
-      <a href="#calculator" class="px-5 py-4 border-b border-slate-100 text-brand-orange" onclick="closeMenu()">โปรแกรมคำนวณ</a>
-      <a href="#" class="px-5 py-4 border-b border-slate-100">ผลงาน</a>
-      <a href="#" class="px-5 py-4 border-b border-slate-100">คำถามที่พบบ่อย</a>
-      <a href="#" class="px-5 py-4 border-b border-slate-100">ติดต่อเรา</a>
+      <a href="#calculator" class="px-5 py-4 border-b border-slate-100 text-brand-orange" onclick="closeMenu()">โปรแกรมคำนวณค่าไฟ</a>
+      <a href="#" class="px-5 py-4 border-b border-slate-100" onclick="closeMenu()">ผลงาน</a>
+      <a href="#" class="px-5 py-4 border-b border-slate-100" onclick="closeMenu()">คำถามที่พบบ่อย</a>
+      <a href="#" class="px-5 py-4 border-b border-slate-100" onclick="closeMenu()">บทความ</a>
+      <a href="#contact" class="px-5 py-4 border-b border-slate-100" onclick="closeMenu()">ติดต่อเรา</a>
+      <a href="#" class="px-5 py-4 border-b border-slate-100 font-bold">TH</a>
     </div>
   </div>
 
@@ -63,13 +67,14 @@
        2. Floating Contact Button
        ============================== -->
   <div class="fixed bottom-6 right-6 z-50 flex items-center gap-2">
-    <div class="bg-brand-yellow text-brand-navy font-semibold text-sm px-4 py-2 rounded-xl shadow-lg cursor-pointer hover:scale-105 transition">
-      Contact us
-    </div>
-    <button class="w-14 h-14 bg-[#3956a3] rounded-full flex items-center justify-center shadow-lg relative cursor-pointer hover:bg-brand-navy transition">
-      <span class="absolute top-0 right-0 w-5 h-5 bg-red-600 border-2 border-white rounded-full text-[10px] text-white flex items-center justify-center font-bold">2</span>
-      <!-- ไอคอนแชท -->
-      <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 5.91 2 10.74c0 2.76 1.48 5.23 3.79 6.8-.2.98-.82 2.37-2.12 3.52-.16.14-.2.38-.1.57.1.18.3.28.51.26 2.87-.24 5.09-1.66 6.36-2.73.5.07 1.02.1 1.56.1 5.52 0 10-3.91 10-8.74S17.52 2 12 2zm-3.5 9.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm3.5 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm3.5 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"/></svg>
+    <a href="tel:0656059949" class="bg-brand-navy text-brand-yellow font-bold text-sm px-5 py-2.5 rounded-full shadow-xl border border-brand-yellow/30 cursor-pointer hover:scale-105 transition flex items-center gap-2">
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+      ติดต่อ คุณภัค
+    </a>
+    <button class="w-14 h-14 bg-[#00B900] rounded-full flex items-center justify-center shadow-lg relative cursor-pointer hover:bg-green-600 transition">
+      <span class="absolute top-0 right-0 w-5 h-5 bg-red-600 border-2 border-white rounded-full text-[10px] text-white flex items-center justify-center font-bold">1</span>
+      <!-- ไอคอน LINE -->
+      <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 3.55 8.93 8.636 9.613.856.185 2.016.565 2.302 1.29.255.65.166 1.666.082 2.327-.1 1.019-.481 2.373 2.079 1.285 2.56-1.088 6.942-4.088 8.948-6.621 1.355-1.63 1.953-3.66 1.953-7.904zm-14.869 3.03h-2.528a.382.382 0 01-.383-.383v-5.632a.383.383 0 01.383-.383.383.383 0 01.383.383v5.25h2.145a.383.383 0 01.383.383.383.383 0 01-.383.383zm2.593-.383a.383.383 0 01-.383.383h-.002a.382.382 0 01-.381-.383v-5.632a.383.383 0 01.383-.383h.002a.383.383 0 01.381.383v5.632zm4.316 0a.382.382 0 01-.383.383h-.002a.382.382 0 01-.381-.383v-3.774l-2.457 3.992a.379.379 0 01-.32.165h-.005a.383.383 0 01-.378-.383v-5.632a.383.383 0 01.383-.383h.002a.382.382 0 01.381.383v3.774l2.457-3.992a.379.379 0 01.32-.165h.005a.383.383 0 01.378.383v5.632z"/></svg>
     </button>
   </div>
 
@@ -79,37 +84,43 @@
   <div class="bg-brand-navy text-slate-300 text-[11px] sm:text-xs py-2 px-4 border-b border-slate-800">
     <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
       <div class="flex items-center space-x-3">
-        <span class="inline-flex items-center text-brand-yellow font-medium">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span>
-          ผู้ผลิตแผงโซล่าเซลล์มาตรฐาน MiT / มอก.
+        <span class="inline-flex items-center text-brand-yellow font-semibold">
+          <svg class="w-3 h-3 mr-1.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          ของแท้ 100%
         </span>
-        <span class="hidden md:inline">| รองรับสิทธิประโยชน์ BOI สูงสุด 50%</span>
+        <span class="hidden md:inline">|</span>
+        <span class="inline-flex items-center text-slate-300 font-medium">
+          <svg class="w-3 h-3 mr-1.5" fill="currentColor" viewBox="0 0 20 20"><path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/><path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z"/></svg>
+          จัดส่งทั่วประเทศ
+        </span>
       </div>
       <div>
-        <a href="tel:0823473338" class="hover:text-white font-medium">📞 082-347-3338</a>
-        <span class="ml-3">Line: @solarppm</span>
+        <a href="tel:0656059949" class="hover:text-brand-yellow font-medium">📞 065-605-9949 (คุณภัค)</a>
       </div>
     </div>
   </div>
 
-  <header class="sticky top-0 z-40 bg-white shadow-sm border-b border-slate-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
-      <!-- โลโก้ -->
+  <header class="sticky top-0 z-40 bg-white shadow-md border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+      <!-- โลโก้ DJP -->
       <a href="#" class="flex items-center space-x-2">
-        <svg class="w-8 h-8 text-brand-navy" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+        <div class="w-10 h-10 bg-brand-yellow rounded-full flex items-center justify-center text-brand-navy font-black text-2xl italic shadow-md">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
         <div>
-          <span class="text-xl font-bold tracking-tight text-brand-navy leading-none block">SOLAR</span>
-          <span class="text-xl font-bold tracking-tight text-brand-navy leading-none block">PPM</span>
+          <span class="text-2xl font-extrabold tracking-widest text-brand-navy leading-none block">DJP</span>
+          <span class="text-[10px] font-bold tracking-[0.2em] text-slate-500 leading-none block uppercase">Future Energy</span>
         </div>
       </a>
       
       <!-- เมนู Desktop -->
-      <nav class="hidden lg:flex items-center space-x-7 text-sm font-medium text-slate-700">
-        <a href="#" class="text-brand-navy font-bold">หน้าแรก</a>
-        <a href="#about" class="hover:text-brand-orange transition">เกี่ยวกับเรา</a>
-        <a href="#pv-panel" class="hover:text-brand-orange transition">แผงโซล่าเซลล์</a>
-        <a href="#services" class="hover:text-brand-orange transition">บริการ EPC/PPA</a>
-        <a href="#calculator" class="text-brand-orange font-bold hover:underline">คำนวณจุดคุ้มทุน</a>
+      <nav class="hidden lg:flex items-center space-x-6 text-[14px] font-semibold text-slate-700">
+        <a href="#" class="text-brand-navy border-b-2 border-brand-yellow pb-1">หน้าแรก</a>
+        <a href="#about" class="hover:text-brand-orange transition pb-1">เกี่ยวกับเรา</a>
+        <a href="#services" class="hover:text-brand-orange transition pb-1">ติดตั้งโซล่าเซลล์</a>
+        <a href="#pv-panel" class="hover:text-brand-orange transition pb-1">แผงโซล่าเซลล์</a>
+        <a href="#" class="hover:text-brand-orange transition pb-1">ผลงาน</a>
+        <a href="#contact" class="hover:text-brand-orange transition pb-1">ติดต่อเรา</a>
       </nav>
       
       <!-- ปุ่มเปิดเมนู Mobile -->
@@ -120,39 +131,71 @@
   </header>
 
   <!-- ==============================
-       4. Hero Section
+       4. Hero Section (ปรับตามภาพแบนเนอร์ DJP)
        ============================== -->
-  <section class="relative bg-brand-navy text-white py-20 overflow-hidden">
-    <!-- ภาพพื้นหลัง -->
-    <div class="absolute inset-0 opacity-20 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1509391365360-2e959784a276?q=80&w=2072&auto=format&fit=crop');"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-brand-navy via-transparent to-transparent"></div>
+  <section class="relative bg-brand-navy py-20 overflow-hidden">
+    <div class="absolute inset-0 opacity-40 bg-cover bg-center mix-blend-overlay" style="background-image: url('https://images.unsplash.com/photo-1509391365360-2e959784a276?q=80&w=2072&auto=format&fit=crop');"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-brand-navy via-brand-navy/90 to-transparent"></div>
     
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="max-w-3xl">
-        <div class="inline-flex items-center gap-2 bg-brand-yellow/20 border border-brand-yellow/50 text-brand-yellow text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
-          <span>🏆 ผู้ผลิตแผงโซล่าเซลล์ไทย 100% (Made in Thailand)</span>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center">
+      <div class="max-w-2xl w-full text-white">
+        
+        <div class="inline-flex items-center gap-2 bg-brand-yellow text-brand-navy text-xs font-bold px-3 py-1.5 rounded-full mb-4 shadow-lg shadow-yellow-500/20">
+          <span>⚡ POWERING A BETTER FUTURE</span>
         </div>
-        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight leading-tight">
-          บริษัทผลิตแผงและติดตั้งโซล่าเซลล์ <span class="text-brand-orange">ลดต้นทุนค่าไฟสูงสุด 60%</span>
+        
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] mb-4">
+          ครบจบในที่เดียว <br>
+          เรื่องโซลาร์ <span class="text-brand-yellow">คุณภาพ</span>
         </h1>
-        <p class="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed">
-          ด้านการติดตั้งโซล่าเซลล์สำหรับโครงการอุตสาหกรรมมากกว่า 200 MW ทั่วประเทศ 
-          ช่วยเพิ่มความยั่งยืนให้องค์กรและเตรียมพร้อมรับมือกฎ CBAM 
+        
+        <p class="text-lg sm:text-2xl font-medium text-slate-200 mb-2">
+          ผู้นำด้านอุปกรณ์ SOLAR ระดับชั้นนำ
         </p>
-        <div class="mt-8 flex flex-col sm:flex-row gap-3">
-          <a href="#calculator" class="bg-brand-orange hover:bg-orange-600 text-white font-bold text-center px-8 py-3.5 rounded-lg shadow-lg transition">
-            ประเมินค่าไฟเบื้องต้นฟรี
+        
+        <p class="text-sm sm:text-base text-slate-300 leading-relaxed mb-8 max-w-xl">
+          จำหน่ายอุปกรณ์โซลาร์เซลล์ครบวงจร คุณภาพระดับโลก 
+          <span class="text-brand-yellow font-semibold">ครบครัน • มั่นใจ • บริการมืออาชีพ</span>
+          ด้วยประสบการณ์มากกว่า 5 ปี ด้านพลังงานแสงอาทิตย์
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="#calculator" class="bg-brand-yellow hover:bg-yellow-500 text-brand-navy font-bold text-center px-8 py-3.5 rounded-xl shadow-lg transition">
+            คำนวณประหยัดค่าไฟ
           </a>
-          <a href="#services" class="bg-white/10 hover:bg-white/20 text-white font-medium text-center px-8 py-3.5 rounded-lg border border-white/20 transition">
-            ดูรูปแบบการลงทุน (EPC / PPA)
+          <a href="#services" class="bg-white/10 hover:bg-white/20 text-white font-medium text-center px-8 py-3.5 rounded-xl border border-white/30 backdrop-blur-sm transition">
+            ดูรายละเอียดบริการ
           </a>
+        </div>
+      </div>
+
+      <!-- รูปจำลองสินค้า (Inverter / Battery) -->
+      <div class="hidden md:block w-full md:w-1/2 relative mt-10 md:mt-0">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-brand-yellow rounded-full blur-3xl opacity-20"></div>
+        <!-- ใช้ภาพแทนสินค้าจาก Unsplash หรือเว้นไว้สวยๆ เป็น Graphic block -->
+        <div class="bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 p-6 rounded-2xl shadow-2xl ml-auto max-w-sm relative">
+          <div class="absolute -top-4 -right-4 w-20 h-20">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#FACC15" d="M47.7,-57.2C59.5,-47.3,65.3,-30.7,68.2,-13.7C71.1,3.4,71.1,20.8,63.4,34.4C55.7,47.9,40.3,57.5,23.5,63.1C6.6,68.7,-11.7,70.2,-28.4,65.2C-45.2,60.2,-60.4,48.7,-68.8,32.8C-77.2,17,-78.9,-3.3,-72.1,-20.1C-65.4,-36.9,-50.2,-50.3,-34.5,-59.1C-18.9,-68,-2.8,-72.3,10.6,-69.1C24.1,-65.9,47.7,-57.2,47.7,-57.2Z" transform="translate(100 100) scale(0.9)" />
+              <text x="100" y="105" font-family="sans-serif" font-size="28" font-weight="bold" fill="#111827" text-anchor="middle">PREMIUM</text>
+            </svg>
+          </div>
+          <p class="text-brand-yellow font-bold text-sm mb-2">TIER 1 PARTNERS</p>
+          <div class="flex flex-wrap gap-3 items-center">
+            <span class="text-white font-bold text-lg">HUAWEI</span>
+            <span class="text-white font-bold text-lg">SUNGROW</span>
+            <span class="text-white font-bold text-lg">LONGI</span>
+            <span class="text-white font-bold text-lg">TrinaSolar</span>
+            <span class="text-white font-bold text-lg">Jinko</span>
+            <span class="text-white font-bold text-lg">BYD</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ==============================
-       5. Interactive Solar Calculator (Light Theme)
+       5. Interactive Solar Calculator (ระบบเดิม)
        ============================== -->
   <section id="calculator" class="py-16 bg-white border-b border-slate-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -202,8 +245,8 @@
             <div>
               <label class="text-xs font-semibold text-slate-600 block mb-2">ขนาดแผงโซล่าเซลล์</label>
               <select id="panelWatt" class="w-full bg-white border border-slate-300 text-slate-800 text-sm rounded-lg p-2.5 focus:border-brand-orange focus:outline-none" onchange="runCalculator()">
-                <option value="600">แผง 600W (Tier 1)</option>
-                <option value="700">แผง 700W (HJT)</option>
+                <option value="600">แผง 600W (มาตรฐาน)</option>
+                <option value="700">แผง 700W (ประสิทธิภาพสูง)</option>
               </select>
             </div>
             <p class="text-[10px] text-slate-400 mt-2">* ระบบเผื่อค่า System Loss ไว้ที่ 20% ตามหลักวิศวกรรม</p>
@@ -249,13 +292,13 @@
               </div>
             </div>
 
-            <form onsubmit="event.preventDefault(); alert('ขอบคุณครับ ฝ่ายวิศวกรรมจะติดต่อกลับพร้อมรายงานประเมินราคาครับ');" class="bg-slate-50 p-4 rounded-xl border border-slate-200 mt-2">
-              <p class="text-xs text-brand-navy mb-3 font-semibold">รับรายงานเสนอราคาฟรี พร้อมนัดสำรวจหน้างาน</p>
+            <form onsubmit="event.preventDefault(); alert('ขอบคุณครับ ฝ่ายวิศวกรรมจะติดต่อกลับพร้อมนัดประเมินหน้างานฟรีครับ');" class="bg-slate-50 p-4 rounded-xl border border-slate-200 mt-2">
+              <p class="text-xs text-brand-navy mb-3 font-semibold">ปรึกษาก่อนติดตั้ง พร้อมประเมินหน้างาน ฟรี!</p>
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
                 <input type="text" placeholder="ชื่อ / บริษัท" required class="bg-white border border-slate-300 text-slate-800 text-xs rounded-lg px-3 py-2.5 focus:border-brand-orange outline-none" />
                 <input type="tel" placeholder="เบอร์โทรศัพท์" required class="bg-white border border-slate-300 text-slate-800 text-xs rounded-lg px-3 py-2.5 focus:border-brand-orange outline-none" />
-                <button type="submit" class="bg-brand-orange hover:bg-orange-600 text-white font-bold text-xs py-2.5 rounded-lg transition">
-                  รับใบเสนอราคา
+                <button type="submit" class="bg-brand-navy hover:bg-slate-800 text-brand-yellow font-bold text-xs py-2.5 rounded-lg transition">
+                  ติดต่อเจ้าหน้าที่
                 </button>
               </div>
             </form>
@@ -266,53 +309,85 @@
   </section>
 
   <!-- ==============================
-       6. Services & Products (Brief)
+       6. Services & Highlights (อิงจากภาพแบนเนอร์ DJP)
        ============================== -->
   <section id="services" class="py-16 bg-slate-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-brand-navy">บริการติดตั้งโซล่าเซลล์ (EPC & PPA)</h2>
-        <p class="text-slate-500 text-sm mt-2">เลือกรูปแบบการลงทุนที่เหมาะสมกับองค์กรของคุณ</p>
+        <h2 class="text-3xl font-bold text-brand-navy">บริการของเรา (Our Services)</h2>
+        <p class="text-slate-500 text-sm mt-2">ครบจบในที่เดียว เรื่องโซลาร์ คุณภาพ</p>
       </div>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:border-brand-orange transition">
-          <span class="bg-orange-100 text-brand-orange text-xs font-bold px-3 py-1 rounded mb-4 inline-block">ลงทุนเอง (EPC)</span>
-          <h3 class="text-xl font-bold text-brand-navy mb-3">ลดค่าไฟ 100% คืนทุน 3-5 ปี</h3>
-          <p class="text-sm text-slate-600 mb-4">ผู้ประกอบการเป็นเจ้าของระบบเต็มรูปแบบ สามารถนำไปลดหย่อนภาษี BOI สูงสุด 50% พร้อมบริการดูแลรักษาระบบฟรี 2 ปีแรก</p>
+      <div class="grid md:grid-cols-3 gap-8">
+        
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-brand-yellow transition">
+          <div class="w-14 h-14 bg-brand-yellow/20 text-brand-orange rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-brand-navy mb-2">สินค้าคุณภาพ มาตรฐานสากล</h3>
+          <p class="text-sm text-slate-600">จำหน่ายอุปกรณ์โซลาร์เซลล์ครบวงจร แบรนด์ระดับโลก (Tier 1) อาทิ HUAWEI, SUNGROW, LONGI มั่นใจในคุณภาพ 100%</p>
         </div>
-        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:border-brand-navy transition">
-          <span class="bg-blue-100 text-brand-navy text-xs font-bold px-3 py-1 rounded mb-4 inline-block">ติดตั้งฟรี (Private PPA)</span>
-          <h3 class="text-xl font-bold text-brand-navy mb-3">Zero CAPEX ไม่มีค่าใช้จ่ายแรกเข้า</h3>
-          <p class="text-sm text-slate-600 mb-4">ทางเราลงทุนอุปกรณ์และติดตั้งให้ทั้งหมด ลูกค้าเพียงจ่ายค่าไฟตามที่ระบบผลิตได้ ในราคาลดพิเศษ 15-30% ตลอดสัญญา</p>
+        
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-brand-yellow transition">
+          <div class="w-14 h-14 bg-brand-navy text-white rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          </div>
+          <h3 class="text-lg font-bold text-brand-navy mb-2">บริการครบวงจร ออกแบบ-ติดตั้ง</h3>
+          <p class="text-sm text-slate-600">ให้คำปรึกษา ออกแบบระบบ และติดตั้งอย่างถูกต้องตามหลักวิศวกรรม ครอบคลุมทั้งระบบโซลาร์ อินเวอร์เตอร์ แบตเตอรี่ และ EV Charger</p>
         </div>
+        
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-brand-yellow transition">
+          <div class="w-14 h-14 bg-brand-yellow/20 text-brand-orange rounded-xl flex items-center justify-center mb-5">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-brand-navy mb-2">ทีมงานมืออาชีพ บริการรวดเร็ว</h3>
+          <p class="text-sm text-slate-600">ด้วยประสบการณ์มากกว่า 5 ปี ด้านพลังงานแสงอาทิตย์ เราพร้อมดูแลบริการหลังการขาย และรับประกันสินค้าให้อย่างรวดเร็ว</p>
+        </div>
+        
       </div>
     </div>
   </section>
 
   <!-- ==============================
-       7. Footer
+       7. Footer (ปรับตามข้อมูล DJP FUTURE ENERGY)
        ============================== -->
-  <footer class="bg-brand-navy text-slate-400 py-12 text-sm border-t border-slate-800">
+  <footer id="contact" class="bg-brand-navy text-slate-300 py-12 text-sm border-t-4 border-brand-yellow">
     <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-center md:text-left">
       <div>
-        <p class="text-white font-bold text-xl mb-2">SOLAR <span class="text-brand-orange">PPM</span></p>
-        <p class="text-xs">ผู้นำด้านระบบไฟฟ้าพลังงานแสงอาทิตย์ครบวงจร มาตรฐานอุตสาหกรรมสากล</p>
-      </div>
-      <div>
-        <h5 class="text-white font-semibold mb-3">ติดต่อเรา</h5>
-        <p class="text-xs space-y-1">
-          สำนักงานใหญ่: กรุงเทพมหานคร<br>
-          โรงงานผลิต: จ.ชลบุรี<br>
-          โทรศัพท์: 082-347-3338
+        <!-- Logo ใน Footer -->
+        <div class="flex items-center justify-center md:justify-start space-x-2 mb-4">
+          <div class="w-8 h-8 bg-brand-yellow rounded-full flex items-center justify-center text-brand-navy font-black text-xl italic">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div>
+            <span class="text-xl font-extrabold leading-none block text-white tracking-wide">DJP</span>
+            <span class="text-[10px] font-semibold leading-none block text-brand-yellow uppercase tracking-widest">Future Energy</span>
+          </div>
+        </div>
+        <p class="text-xs leading-relaxed text-slate-400">
+          ผู้นำด้านอุปกรณ์ SOLAR ระดับชั้นนำ<br>
+          จำหน่ายอุปกรณ์โซลาร์เซลล์ครบวงจร คุณภาพระดับโลก ครบครัน มั่นใจ บริการมืออาชีพ
         </p>
       </div>
       <div>
-        <h5 class="text-white font-semibold mb-3">รับรองมาตรฐาน</h5>
-        <p class="text-xs">ISO 9001 | ISO 14001 | MiT | มอก.</p>
+        <h5 class="text-white font-bold mb-3 text-base">ที่ตั้งบริษัท</h5>
+        <p class="text-xs space-y-1 leading-relaxed text-slate-400">
+          บริษัท ดีเจพี ฟิวเจอร์ เอ็นเนอร์ยี่ (ไทยแลนด์) จำกัด (สำนักงานใหญ่)<br>
+          429/69 หมู่บ้านเดอะแพลนท์สรงประภา ถนนสรงประภา<br>
+          แขวงดอนเมือง เขตดอนเมือง กรุงเทพมหานคร 10210<br><br>
+          เลขประจำตัวผู้เสียภาษี: 0105565134187
+        </p>
+      </div>
+      <div>
+        <h5 class="text-white font-bold mb-3 text-base">ติดต่อสอบถาม</h5>
+        <p class="text-xs space-y-2 text-slate-400">
+          <span class="block">📞 เบอร์มือถือ: <span class="text-brand-yellow font-bold">065-605-9949 (คุณภัค)</span></span>
+          <span class="block">☎️ โทร. 062-564-4043</span>
+          <span class="block">🌐 www.djp-fe.com</span>
+        </p>
       </div>
     </div>
-    <div class="max-w-7xl mx-auto px-4 mt-8 pt-6 border-t border-slate-800 text-center text-xs text-slate-500">
-      &copy; 2026 Solar PPM Demo. Created for Client Presentation.
+    <div class="max-w-7xl mx-auto px-4 mt-8 pt-6 border-t border-slate-700 text-center text-xs text-slate-500">
+      &copy; 2026 DJP Future Energy (Thailand) Co., Ltd. All Rights Reserved.
     </div>
   </footer>
 
@@ -339,7 +414,7 @@
 
     closeMenuBtn.addEventListener('click', closeMenu);
 
-    /* 2. โปรแกรมคำนวณ Solar (Light Theme Logic) */
+    /* 2. โปรแกรมคำนวณ Solar (Logic เดิม 100%) */
     function runCalculator() {
       const bill = parseFloat(document.getElementById('inputBill').value);
       const rate = parseFloat(document.getElementById('inputRate').value) || 4.7;
