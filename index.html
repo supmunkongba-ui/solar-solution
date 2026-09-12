@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DJP FUTURE ENERGY - เครื่องคำนวณโซลาร์เซลล์อัจฉริยะ (อัตราใหม่)</title>
+  <title>DJP FUTURE ENERGY x INSIDER SYSTEM - จำหน่ายและติดตั้งโซล่าเซลล์ครบวงจร</title>
   <!-- Tailwind CSS & Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,7 +42,7 @@
           ⚡
         </div>
         <h3 class="text-xl font-bold text-brand-navy">ใบเสนอราคาประเมินเบื้องต้น</h3>
-        <p class="text-xs text-slate-500">DJP Future Energy - โซลาร์เซลล์คุณภาพมาตรฐานสากล</p>
+        <p class="text-xs text-slate-500">DJP Future Energy x Insider System - One Stop Service</p>
       </div>
 
       <div class="bg-slate-50 rounded-2xl p-4 space-y-3 text-xs sm:text-sm mb-6 border border-slate-200">
@@ -85,7 +85,7 @@
   <!-- ==============================
        Floating Contact & Click-to-Call Buttons
        ============================== -->
-  <div class="fixed bottom-4 right-4 z-50 flex items-center gap-2">
+  <div class="fixed bottom-6 right-6 z-50 flex items-center gap-2">
     <a href="tel:0656059949" class="bg-brand-yellow text-brand-navy font-bold text-xs sm:text-sm px-4 py-3 rounded-full shadow-2xl border border-brand-yellow/40 flex items-center gap-2 hover:scale-105 transition">
       <svg class="w-4 h-4 animate-bounce" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
       <span>โทร 065-605-9949 (คุณภัค)</span>
@@ -93,7 +93,7 @@
   </div>
 
   <!-- ==============================
-       Header & Navbar
+       Header & Navbar (เมนูตามเว็บ Insider System)
        ============================== -->
   <header class="sticky top-0 z-40 bg-brand-navy/95 backdrop-blur-md shadow-md border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
@@ -107,6 +107,19 @@
         </div>
       </a>
       
+      <!-- Desktop Menu (ตามแบบ Insider System) -->
+      <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-slate-300">
+        <a href="#" class="text-brand-yellow">หน้าแรก</a>
+        <a href="#about" class="hover:text-brand-yellow transition">เกี่ยวกับเรา</a>
+        <a href="#services" class="hover:text-brand-yellow transition">ติดตั้งโซล่าเซลล์</a>
+        <a href="#pv-panel" class="hover:text-brand-yellow transition">แผงโซล่าเซลล์</a>
+        <a href="#calculator" class="hover:text-brand-yellow transition">โปรแกรมคำนวณค่าไฟ</a>
+        <a href="#portfolio" class="hover:text-brand-yellow transition">ผลงาน</a>
+        <a href="#faq" class="hover:text-brand-yellow transition">คำถามที่พบบ่อย</a>
+        <a href="#articles" class="hover:text-brand-yellow transition">บทความ</a>
+        <a href="#contact" class="hover:text-brand-yellow transition">ติดต่อเรา</a>
+      </nav>
+
       <div class="flex items-center gap-4">
         <a href="tel:0656059949" class="text-xs sm:text-sm text-brand-yellow font-semibold hover:underline">📞 065-605-9949</a>
       </div>
@@ -114,17 +127,17 @@
   </header>
 
   <!-- ==============================
-       Main Calculator Section (อิงโครงสร้างภาพ)
+       Main Calculator Section
        ============================== -->
   <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
     
     <!-- Title Header -->
     <div class="text-center mb-8">
-      <h1 class="text-3xl sm:text-4xl font-extrabold text-white mb-2">เครื่องคำนวณโซลาร์เซลล์</h1>
-      <p class="text-brand-yellow text-sm tracking-wider uppercase font-semibold">SOLAR CALCULATOR · อัตราใหม่ ก้าวหน้า 3 ระดับ · NET BILLING 2.20 บ./หน่วย</p>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white mb-2">จำหน่ายและติดตั้งโซล่าเซลล์ ครบวงจร</h1>
+      <p class="text-brand-yellow text-sm tracking-wider uppercase font-semibold">One Stop Service ทุกระบบจบในที่เดียว · อัตราใหม่ ก้าวหน้า 3 ระดับ</p>
     </div>
 
-    <!-- Tier Cards Overview (ตามภาพ 1000033106.jpg) -->
+    <!-- Tier Cards Overview -->
     <div class="grid md:grid-cols-3 gap-4 mb-8">
       <div class="bg-brand-card border border-slate-700 p-5 rounded-2xl text-center shadow-md">
         <span class="bg-emerald-500/20 text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">TIER 1</span>
@@ -150,11 +163,11 @@
     </div>
 
     <!-- Calculator Core Form Box -->
-    <div class="bg-brand-card border border-slate-700 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
+    <div id="calculator" class="bg-brand-card border border-slate-700 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
       
       <!-- STEP 0: TIER CHECK -->
       <div>
-        <h3 class="text-brand-yellow font-bold text-sm mb-3">// STEP 0 - TIER CHECK</h3>
+        <h3 class="text-brand-yellow font-bold text-sm mb-3">// STEP 0 - TIER CHECK (ตรวจสอบระดับค่าไฟ)</h3>
         <label class="text-xs text-slate-300 block mb-2">ค่าไฟเฉลี่ยต่อเดือน (บาท รวม VAT 7%):</label>
         <input id="inputBill" type="number" value="8000" class="w-full bg-slate-900 border border-slate-700 text-white text-base rounded-xl p-3.5 focus:border-brand-yellow focus:outline-none" oninput="calculateAll()">
       </div>
@@ -258,13 +271,52 @@
   </section>
 
   <!-- ==============================
+       Content & Guide Section (เนื้อหาตาม Insider System)
+       ============================== -->
+  <section id="about" class="py-16 bg-[#070d1f] border-t border-slate-800 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto space-y-12">
+      
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">เกี่ยวกับเรา - Insider System & DJP Future Energy</h2>
+        <p class="text-slate-300 text-sm leading-relaxed mb-4">
+          เรามุ่งเน้นการใช้งานระบบพลังงานแสงอาทิตย์ เพื่อสนับสนุนคุณภาพชีวิต ลดผลกระทบที่มีต่อสิ่งแวดล้อม และประหยัดพลังงานอย่างยั่งยืน ด้วยทีมงานวิศวกรผู้เชี่ยวชาญ One Stop Service ทุกระบบจบในที่เดียว
+        </p>
+      </div>
+
+      <div id="services">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">ติดตั้งโซล่าเซลล์ครบวงจร</h2>
+        <p class="text-slate-300 text-sm leading-relaxed mb-4">
+          บริการสำรวจหน้างาน ออกแบบระบบ ขออนุญาตการไฟฟ้า และติดตั้งด้วยอุปกรณ์มาตรฐานระดับโลก (Huawei, Sungrow, Longi, Trina Solar) พร้อมบริการหลังการขายรวดเร็ว
+        </p>
+      </div>
+
+      <div id="pv-panel">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">แผงโซล่าเซลล์และอุปกรณ์ Tier 1</h2>
+        <p class="text-slate-300 text-sm leading-relaxed mb-4">
+          คัดสรรเฉพาะแผงโซล่าเซลล์ชนิด Monofacial / Bifacial ประสิทธิภาพสูง ทนทานต่อสภาพอากาศประเทศไทย รับประกันประสิทธิภาพการผลิตยาวนาน 25-30 ปี
+        </p>
+      </div>
+
+      <div id="faq">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">คำถามที่พบบ่อย (FAQ)</h2>
+        <ul class="list-disc pl-5 space-y-2 text-sm text-slate-300">
+          <li>ติดโซล่าเซลล์ขนาดเท่าไหร่ถึงจะคุ้มที่สุด? (คำนวณง่ายๆ ด้วยโปรแกรมด้านบน)</li>
+          <li>ขั้นตอนการขออนุญาตกับการไฟฟ้าใช้เวลานานไหม? (เราดูแลให้ทั้งหมด)</li>
+          <li>การดูแลรักษาและล้างแผงทำบ่อยแค่ไหน? (แนะนำปีละ 1-2 ครั้ง)</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==============================
        Footer
        ============================== -->
   <footer id="contact" class="bg-brand-navy text-slate-300 py-12 text-sm border-t-4 border-brand-yellow">
     <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-center md:text-left">
       <div>
-        <p class="text-white font-bold text-xl mb-2">DJP FUTURE ENERGY</p>
-        <p class="text-xs leading-relaxed text-slate-400">ผู้นำด้านอุปกรณ์ SOLAR ระดับชั้นนำ ครบครัน มั่นใจ บริการมืออาชีพ</p>
+        <p class="text-white font-bold text-xl mb-2">DJP & INSIDER SYSTEM</p>
+        <p class="text-xs leading-relaxed text-slate-400">One Stop Service ทุกระบบจบในที่เดียว เรื่องโซลาร์ คุณภาพ</p>
       </div>
       <div>
         <h5 class="text-white font-bold mb-3 text-base">ที่ตั้งสำนักงานใหญ่</h5>
@@ -277,12 +329,12 @@
         <h5 class="text-white font-bold mb-3 text-base">ติดต่อด่วน</h5>
         <p class="text-xs space-y-2 text-slate-400">
           <span class="block">📞 <a href="tel:0656059949" class="text-brand-yellow font-bold hover:underline">065-605-9949 (คุณภัค)</a></span>
-          <span class="block">☎️ โทร. 02-564-4043</span>
+          <span class="block">☎️ โทร. 02-069-5454</span>
         </p>
       </div>
     </div>
     <div class="max-w-7xl mx-auto px-4 mt-8 pt-6 border-t border-slate-700 text-center text-xs text-slate-500">
-      &copy; 2026 DJP Future Energy (Thailand) Co., Ltd. All Rights Reserved.
+      &copy; 2026 DJP Future Energy & Insider System. All Rights Reserved.
     </div>
   </footer>
 
@@ -309,7 +361,6 @@
       const psh = parseFloat(document.getElementById('pshValue').value);
       const isNetBilling = document.getElementById('netBillingCheck').checked;
 
-      // น้ำหนักการใช้ไฟเฉลี่ย
       const avgDayRatio = (monFri * 5 + satSun * 2) / 7;
 
       const monthlyKwh = bill / rate;
@@ -326,17 +377,16 @@
 
       let netBillingIncome = 0;
       if(isNetBilling) {
-        netBillingIncome = (monthlyProduction * 0.20) * 2.20; // รับซื้อคืน 2.20 บ.
+        netBillingIncome = (monthlyProduction * 0.20) * 2.20;
       }
 
       const yearlySavings = (monthlySavings + netBillingIncome) * 12;
-      const totalSystemCost = actualKwp * 26000; // ต้นทุนประเมินเฉลี่ยต่อ kWp
+      const totalSystemCost = actualKwp * 26000;
 
       let payback = totalSystemCost / yearlySavings;
       if(payback < 2) payback = 3.5;
       if(payback > 10) payback = 9.9;
 
-      // เก็บข้อมูลใส่ Modal
       globalData = {
         capacity: actualKwp.toFixed(1) + ' kWp',
         panels: numPanels.toLocaleString() + ' แผง',
@@ -345,7 +395,6 @@
         totalCost: '฿' + Math.round(totalSystemCost).toLocaleString()
       };
 
-      // แสดงผลหน้าจอ
       document.getElementById('resPanels').innerText = numPanels.toLocaleString();
       document.getElementById('resCapacity').innerText = actualKwp.toFixed(1);
       document.getElementById('resYearlySave').innerText = '฿' + Math.round(yearlySavings).toLocaleString();
