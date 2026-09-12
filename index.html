@@ -95,6 +95,7 @@
     <div class="flex flex-col text-base font-medium divide-y divide-slate-800">
       <a href="#" class="px-6 py-4 hover:bg-slate-900 text-amber-400 font-bold" onclick="toggleMobileMenu()">หน้าแรก</a>
       <a href="#calculator" class="px-6 py-4 hover:bg-slate-900" onclick="toggleMobileMenu()">เครื่องคำนวณโซล่าเซลล์</a>
+      <a href="#blog" class="px-6 py-4 hover:bg-slate-900" onclick="toggleMobileMenu()">บทความสาระน่ารู้</a>
       <a href="#contact" class="px-6 py-4 hover:bg-slate-900" onclick="toggleMobileMenu()">ติดต่อเรา & แผนที่</a>
     </div>
   </div>
@@ -134,6 +135,7 @@
       <div class="hidden md:flex items-center space-x-6 text-sm font-semibold">
         <a href="#" class="hover:text-amber-400">หน้าแรก</a>
         <a href="#calculator" class="hover:text-amber-400">เครื่องคำนวณ</a>
+        <a href="#blog" class="hover:text-amber-400">บทความความรู้</a>
         <a href="#contact" class="text-amber-400">ติดต่อเรา</a>
       </div>
 
@@ -291,7 +293,144 @@
   </section>
 
   <!-- ==============================
-       Dedicated Contact Us Section (ตามภาพ 1000033088_3.jpg)
+       Solar Rooftop Blog Section (6 หัวข้อบทความสาระน่ารู้)
+       ============================== -->
+  <section id="blog" class="py-16 bg-[#060a12] border-t border-slate-800 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Articles & Knowledge</span>
+        <h2 class="text-3xl font-bold text-white mt-1">บทความสาระน่ารู้เกี่ยวกับโซล่าเซลล์</h2>
+        <p class="text-slate-400 text-sm mt-2">อัปเดตความรู้ เทคนิค และเกร็ดความรู้สำคัญในการติดตั้ง Solar Rooftop ให้คุ้มค่าที่สุด</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- บทความที่ 1 -->
+        <div class="bg-[#0f172a] border border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-amber-500/50 transition group">
+          <div>
+            <div class="flex items-center justify-between text-xs text-amber-400 mb-3">
+              <span>💡 คู่มือการลงทุน</span>
+              <span class="text-slate-500">5 นาทีอ่าน</span>
+            </div>
+            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition mb-2">
+              1. โซล่าเซลล์บ้านคุ้มจริงไหม? ไขข้อข้องใจระยะเวลาคืนทุนในยุคค่าไฟแพง
+            </h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              วิเคราะห์ความคุ้มค่าแบบเจาะลึก เปรียบเทียบค่าไฟก่อนและหลังติด พร้อมวิธีคำนวณจุดคุ้มทุนที่บ้านพักอาศัยควรทราบ
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-slate-500">เผยแพร่: 2026</span>
+            <a href="#calculator" class="text-amber-400 font-bold hover:underline flex items-center gap-1">คำนวณเลย &rarr;</a>
+          </div>
+        </div>
+
+        <!-- บทความที่ 2 -->
+        <div class="bg-[#0f172a] border border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-amber-500/50 transition group">
+          <div>
+            <div class="flex items-center justify-between text-xs text-amber-400 mb-3">
+              <span>⚡ นโยบายภาครัฐ</span>
+              <span class="text-slate-500">4 นาทีอ่าน</span>
+            </div>
+            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition mb-2">
+              2. ทำความรู้จัก Net Billing นโยบายใหม่รับซื้อไฟฟ้าส่วนเกิน 2.20 บาท
+            </h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              เจาะลึกเงื่อนไขการขายไฟคืนการไฟฟ้า โควตาจำกัด และผลดีต่อบ้านหรือธุรกิจขนาดเล็กที่ผลิตไฟฟ้าเกินช่วงกลางวัน
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-slate-500">เผยแพร่: 2026</span>
+            <a href="#calculator" class="text-amber-400 font-bold hover:underline flex items-center gap-1">ศึกษาระบบ &rarr;</a>
+          </div>
+        </div>
+
+        <!-- บทความที่ 3 -->
+        <div class="bg-[#0f172a] border border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-amber-500/50 transition group">
+          <div>
+            <div class="flex items-center justify-between text-xs text-amber-400 mb-3">
+              <span>🏗️ มาตรฐานวิศวกรรม</span>
+              <span class="text-slate-500">6 นาทีอ่าน</span>
+            </div>
+            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition mb-2">
+              3. เลือกขนาด kWp ให้เหมาะกับบ้านและโรงงาน: ติดเท่าไหร่ถึงจะไม่เสียเปล่า?
+            </h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              ไขข้อข้องใจเรื่องสัดส่วนการใช้ไฟกลางวัน ปัจจัยเรื่อง PSH แดดแต่ละภาค และวิธีเลือกขนาดอินเวอร์เตอร์ที่ถูกต้อง
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-slate-500">เผยแพร่: 2026</span>
+            <a href="#calculator" class="text-amber-400 font-bold hover:underline flex items-center gap-1">ลองคำนวณ &rarr;</a>
+          </div>
+        </div>
+
+        <!-- บทความที่ 4 -->
+        <div class="bg-[#0f172a] border border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-amber-500/50 transition group">
+          <div>
+            <div class="flex items-center justify-between text-xs text-amber-400 mb-3">
+              <span>🛡️ การบำรุงรักษา</span>
+              <span class="text-slate-500">3 นาทีอ่าน</span>
+            </div>
+            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition mb-2">
+              4. วิธีดูแลรักษาและล้างแผงโซล่าเซลล์อย่างไรให้ผลิตไฟเต็มประสิทธิภาพตลอด 25 ปี
+            </h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              ข้อควรระวังในการทำความสะอาดแผง คราบฝุ่น มูลนกที่ส่งผลต่อกระแสไฟ และความถี่ในการตรวจเช็คระบบไฟฟ้าประจำปี
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-slate-500">เผยแพร่: 2026</span>
+            <a href="#contact" class="text-amber-400 font-bold hover:underline flex items-center gap-1">ติดต่อบริการ &rarr;</a>
+          </div>
+        </div>
+
+        <!-- บทความที่ 5 -->
+        <div class="bg-[#0f172a] border border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-amber-500/50 transition group">
+          <div>
+            <div class="flex items-center justify-between text-xs text-amber-400 mb-3">
+              <span>🔋 เทคโนโลยีอินเวอร์เตอร์</span>
+              <span class="text-slate-500">5 นาทีอ่าน</span>
+            </div>
+            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition mb-2">
+              5. On-Grid vs Hybrid ต่างกันอย่างไร? เลือกแบบไหนให้ตอบโจทย์ไลฟ์สไตล์คุณ
+            </h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              เปรียบเทียบระบบออนกริดประหยัดค่าไฟปกติ กับระบบไฮบริดพ่วงแบตเตอรี่สำรองยามไฟดับ พร้อมข้อดี-ข้อจำกัดที่ควรรู้
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-slate-500">เผยแพร่: 2026</span>
+            <a href="#contact" class="text-amber-400 font-bold hover:underline flex items-center gap-1">ปรึกษาเรา &rarr;</a>
+          </div>
+        </div>
+
+        <!-- บทความที่ 6 -->
+        <div class="bg-[#0f172a] border border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-amber-500/50 transition group">
+          <div>
+            <div class="flex items-center justify-between text-xs text-amber-400 mb-3">
+              <span>🏭 ภาคธุรกิจและโรงงาน</span>
+              <span class="text-slate-500">5 นาทีอ่าน</span>
+            </div>
+            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition mb-2">
+              6. โซล่าเซลล์โรงงาน ลดต้นทุนการผลิตและเตรียมพร้อมรับมือกฎหมาย CBAM
+            </h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              ทำไมภาคอุตสาหกรรมถึงต้องเร่งเปลี่ยนมาใช้พลังงานสะอาด สิทธิประโยชน์ BOI และการลด Carbon Footprint เพื่อการส่งออก
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-slate-500">เผยแพร่: 2026</span>
+            <a href="#contact" class="text-amber-400 font-bold hover:underline flex items-center gap-1">ขอใบเสนอราคา &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================
+       Dedicated Contact Us Section
        ============================== -->
   <section id="contact" class="py-16 bg-[#060a12] border-t border-slate-800 px-4 sm:px-6 lg:px-8">
     <div class="max-w-6xl mx-auto">
@@ -348,7 +487,7 @@
           </div>
         </div>
 
-        <!-- ฟอร์มติดต่อมาตรฐาน (Standard Contact Form) -->
+        <!-- ฟอร์มติดต่อมาตรฐาน -->
         <div class="bg-[#0f172a] border border-slate-800 p-6 sm:p-8 rounded-3xl shadow-xl">
           <h3 class="text-lg font-bold text-white mb-2">ส่งข้อความถึงเรา</h3>
           <p class="text-xs text-slate-400 mb-6">กรอกข้อมูลด้านล่างเพื่อให้ทีมงานติดต่อกลับพร้อมให้คำปรึกษาฟรี</p>
