@@ -29,7 +29,7 @@
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-yellow selection:text-brand-navy">
 
   <!-- ==============================
-       Modal สำหรับแสดงใบเสนอราคาอัตโนมัติ (Instant Quotation Modal)
+       Modal ออกใบเสนอราคาอัตโนมัติ
        ============================== -->
   <div id="quoteModal" class="fixed inset-0 z-[200] hidden items-center justify-center bg-black/60 p-4 backdrop-blur-sm">
     <div class="bg-white w-full max-w-lg rounded-3xl p-6 sm:p-8 shadow-2xl relative border border-slate-100">
@@ -47,28 +47,28 @@
 
       <div class="bg-slate-50 rounded-2xl p-4 space-y-3 text-xs sm:text-sm mb-6 border border-slate-200">
         <div class="flex justify-between border-b border-slate-200 pb-2">
+          <span class="text-slate-500">ระดับค่าไฟในระบบ:</span>
+          <span id="modalTier" class="font-bold text-brand-orange">Tier 2 (อัตราปกติ)</span>
+        </div>
+        <div class="flex justify-between border-b border-slate-200 pb-2">
           <span class="text-slate-500">ขนาดระบบที่เหมาะสม:</span>
-          <span id="modalCapacity" class="font-bold text-brand-navy">10 kWp</span>
+          <span id="modalCapacity" class="font-bold text-brand-navy">5 kWp</span>
         </div>
         <div class="flex justify-between border-b border-slate-200 pb-2">
           <span class="text-slate-500">จำนวนแผงโซลาร์เซลล์:</span>
-          <span id="modalPanels" class="font-bold text-brand-navy">16 แผง</span>
-        </div>
-        <div class="flex justify-between border-b border-slate-200 pb-2">
-          <span class="text-slate-500">พื้นที่หลังคาโดยประมาณ:</span>
-          <span id="modalArea" class="font-bold text-brand-navy">40 ตร.ม.</span>
+          <span id="modalPanels" class="font-bold text-brand-navy">9 แผง</span>
         </div>
         <div class="flex justify-between border-b border-slate-200 pb-2">
           <span class="text-slate-500">ประหยัดค่าไฟต่อปี:</span>
-          <span id="modalYearlySave" class="font-bold text-emerald-600">฿62,376</span>
+          <span id="modalYearlySave" class="font-bold text-emerald-600">฿35,000</span>
         </div>
         <div class="flex justify-between border-b border-slate-200 pb-2">
           <span class="text-slate-500">ระยะเวลาคืนทุน:</span>
-          <span id="modalPayback" class="font-bold text-brand-orange">4.5 ปี</span>
+          <span id="modalPayback" class="font-bold text-brand-orange">4.2 ปี</span>
         </div>
         <div class="flex justify-between text-base pt-1">
-          <span class="font-bold text-brand-navy">งบลงทุนประเมิน (โดยประมาณ):</span>
-          <span id="modalTotalCost" class="font-extrabold text-brand-navy">฿280,000</span>
+          <span class="font-bold text-brand-navy">งบลงทุนประเมิน:</span>
+          <span id="modalTotalCost" class="font-extrabold text-brand-navy">฿150,000</span>
         </div>
       </div>
 
@@ -102,10 +102,8 @@
     </div>
     <div class="flex flex-col text-[15px] font-medium text-slate-700">
       <a href="#" class="px-5 py-4 border-b border-slate-100 text-brand-navy font-bold" onclick="closeMenu()">หน้าแรก</a>
-      <a href="#about" class="px-5 py-4 border-b border-slate-100" onclick="closeMenu()">เกี่ยวกับเรา</a>
-      <a href="#services" class="px-5 py-4 border-b border-slate-100" onclick="closeMenu()">ติดตั้งโซล่าเซลล์</a>
-      <a href="#calculator" class="px-5 py-4 border-b border-slate-100 text-brand-orange font-bold" onclick="closeMenu()">โปรแกรมคำนวณ & ใบเสนอราคา</a>
-      <a href="#contact" class="px-5 py-4 border-b border-slate-100" onclick="closeMenu()">ติดต่อเรา</a>
+      <a href="#calculator" class="px-5 py-4 border-b border-slate-100 text-brand-orange font-bold" onclick="closeMenu()">โปรแกรมคำนวณขั้นสูง</a>
+      <a href="#contact" class="px-5 py-4 border-b border-slate-100" onclick="closeMenu()">ติดต่อเรา (คุณภัค)</a>
     </div>
   </div>
 
@@ -113,14 +111,9 @@
        2. Floating Contact & Click-to-Call Buttons
        ============================== -->
   <div class="fixed bottom-6 right-6 z-50 flex items-center gap-2">
-    <!-- Click-to-Call ปุ่มโทรออกทันที -->
     <a href="tel:0656059949" class="bg-brand-navy text-brand-yellow font-bold text-xs sm:text-sm px-4 py-3 rounded-full shadow-2xl border border-brand-yellow/40 flex items-center gap-2 hover:scale-105 transition">
       <svg class="w-4 h-4 animate-bounce" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
       <span>โทร 065-605-9949</span>
-    </a>
-    <!-- LINE Official Button -->
-    <a href="https://line.me" target="_blank" class="w-12 h-12 bg-[#00B900] rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition">
-      <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 3.55 8.93 8.636 9.613.856.185 2.016.565 2.302 1.29.255.65.166 1.666.082 2.327-.1 1.019-.481 2.373 2.079 1.285 2.56-1.088 6.942-4.088 8.948-6.621 1.355-1.63 1.953-3.66 1.953-7.904z"/></svg>
     </a>
   </div>
 
@@ -130,7 +123,7 @@
   <div class="bg-brand-navy text-slate-300 text-[11px] sm:text-xs py-2 px-4 border-b border-slate-800">
     <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
       <div class="flex items-center space-x-3">
-        <span class="inline-flex items-center text-brand-yellow font-semibold">⚡ ของแท้ 100% | จัดส่งทั่วประเทศ</span>
+        <span class="inline-flex items-center text-brand-yellow font-semibold">⚡ อัปเดตโครงสร้างค่าไฟใหม่ (3 ระดับ) & Net Billing</span>
       </div>
       <div>
         <a href="tel:0656059949" class="hover:text-brand-yellow font-medium">📞 065-605-9949 (คุณภัค)</a>
@@ -152,8 +145,7 @@
       
       <nav class="hidden lg:flex items-center space-x-6 text-[14px] font-semibold text-slate-700">
         <a href="#" class="text-brand-navy border-b-2 border-brand-yellow pb-1">หน้าแรก</a>
-        <a href="#services" class="hover:text-brand-orange transition pb-1">บริการของเรา</a>
-        <a href="#calculator" class="text-brand-orange transition pb-1 font-bold">คำนวณค่าไฟ & ขอใบเสนอราคา</a>
+        <a href="#calculator" class="text-brand-orange transition pb-1 font-bold">โปรแกรมคำนวณขั้นสูง (Puma Style)</a>
         <a href="#contact" class="hover:text-brand-orange transition pb-1">ติดต่อเรา</a>
       </nav>
       
@@ -171,20 +163,20 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="max-w-2xl">
         <div class="inline-flex items-center gap-2 bg-brand-yellow text-brand-navy text-xs font-bold px-3 py-1.5 rounded-full mb-4 shadow-lg">
-          <span>⚡ POWERING A BETTER FUTURE</span>
+          <span>⚡ ADVANCED SOLAR CALCULATOR</span>
         </div>
         <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.1] mb-4">
-          ครบจบในที่เดียว เรื่องโซลาร์ <span class="text-brand-yellow">คุณภาพ</span>
+          คำนวณโซลาร์เซลล์อัจฉริยะ <span class="text-brand-yellow">แม่นยำตามจริง</span>
         </h1>
         <p class="text-sm sm:text-base text-slate-300 leading-relaxed mb-8">
-          ผู้นำด้านอุปกรณ์ SOLAR ระดับชั้นนำ ครบครัน มั่นใจ บริการมืออาชีพ ด้วยประสบการณ์มากกว่า 5 ปี
+          จำลองระบบโครงสร้างค่าไฟอัตราใหม่ ระดับก้าวหน้า 3 ระดับ พร้อมระบบคำนวณแผง, Net Billing และออกใบเสนอราคาทันที
         </p>
         <div class="flex flex-col sm:flex-row gap-3">
           <a href="#calculator" class="bg-brand-yellow hover:bg-yellow-500 text-brand-navy font-bold text-center px-8 py-3.5 rounded-xl shadow-lg transition">
-            คำนวณค่าไฟ & ออกใบเสนอราคา
+            เริ่มคำนวณเลย
           </a>
           <a href="tel:0656059949" class="bg-white/10 hover:bg-white/20 text-white font-medium text-center px-8 py-3.5 rounded-xl border border-white/30 backdrop-blur-sm transition">
-            📞 โทรด่วน: 065-605-9949
+            📞 สายด่วน: 065-605-9949 (คุณภัค)
           </a>
         </div>
       </div>
@@ -192,96 +184,125 @@
   </section>
 
   <!-- ==============================
-       5. Interactive Solar Calculator + Instant Quote Trigger
+       5. Puma Sunergy Style Calculator + Instant Quote
        ============================== -->
   <section id="calculator" class="py-16 bg-white border-b border-slate-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl mx-auto text-center mb-10">
-        <span class="text-brand-orange text-xs font-bold uppercase tracking-widest">Smart Solar ROI Calculator</span>
-        <h2 class="text-3xl font-bold mt-1 text-brand-navy">โปรแกรมคำนวณและออกใบเสนอราคาออนไลน์</h2>
-        <p class="text-slate-500 text-sm mt-2">ปรับแต่งค่าไฟและพื้นที่ แล้วกดออกใบเสนอราคาได้ทันที</p>
+        <span class="text-brand-orange text-xs font-bold uppercase tracking-widest">Advanced Calculator Engine</span>
+        <h2 class="text-3xl font-bold mt-1 text-brand-navy">โปรแกรมคำนวณโซลาร์เซลล์ (ตามแบบฉบับมาตรฐานมืออาชีพ)</h2>
+        <p class="text-slate-500 text-sm mt-2">คำนวณตามระดับค่าไฟ, สัดส่วนใช้ไฟกลางวัน (จ-ศ / ส-อา) และ ชั่วโมงแดด (PSH)</p>
       </div>
 
       <div class="max-w-6xl mx-auto bg-white border border-slate-200 rounded-3xl p-5 sm:p-8 shadow-xl">
         <div class="grid lg:grid-cols-12 gap-8">
           
-          <!-- Inputs -->
-          <div class="lg:col-span-5 space-y-6 bg-slate-50 p-6 rounded-2xl border border-slate-200">
+          <!-- Inputs Config -->
+          <div class="lg:col-span-6 space-y-5 bg-slate-50 p-6 rounded-2xl border border-slate-200">
+            <h3 class="text-brand-navy font-bold text-sm border-b pb-2">ขั้นตอนที่ 1: กำหนดข้อมูลการใช้ไฟฟ้า</h3>
+            
+            <!-- ค่าไฟรายเดือน -->
             <div>
-              <div class="flex justify-between items-center mb-2">
-                <label class="text-xs font-semibold text-slate-700">บิลค่าไฟฟ้าเฉลี่ยต่อเดือน (บาท)</label>
-                <span id="dispBill" class="text-xl font-bold text-brand-orange">฿20,000</span>
+              <div class="flex justify-between items-center mb-1">
+                <label class="text-xs font-semibold text-slate-700">ค่าไฟเฉลี่ยต่อเดือน (บาท รวม VAT 7%):</label>
+                <span id="dispBill" class="text-lg font-bold text-brand-orange">฿8,000</span>
               </div>
-              <input id="inputBill" type="range" min="3000" max="500000" step="1000" value="20000" class="w-full h-2 bg-slate-300 rounded-lg appearance-none cursor-pointer accent-brand-orange" oninput="runCalculator()">
+              <input id="inputBill" type="range" min="2000" max="100000" step="500" value="8000" class="w-full h-2 bg-slate-300 rounded-lg appearance-none cursor-pointer accent-brand-orange" oninput="runAdvancedCalculator()">
             </div>
 
-            <div class="grid grid-cols-2 gap-4">
+            <!-- อัตราค่าไฟตาม Tier -->
+            <div class="grid grid-cols-2 gap-3">
               <div>
-                <label class="text-xs font-semibold text-slate-600 block mb-2">อัตราค่าไฟ (บ./หน่วย)</label>
-                <input id="inputRate" type="number" step="0.1" value="4.7" class="w-full bg-white border border-slate-300 text-slate-800 text-sm rounded-lg p-2.5 focus:border-brand-orange focus:outline-none" onchange="runCalculator()">
+                <label class="text-xs font-semibold text-slate-600 block mb-1">ระดับค่าไฟ (Tier Rate)</label>
+                <select id="tierRate" class="w-full bg-white border border-slate-300 text-slate-800 text-xs rounded-lg p-2.5 focus:border-brand-orange focus:outline-none" onchange="runAdvancedCalculator()">
+                  <option value="2.80">Tier 1 (1–200 หน่วย ~2.80 ฿)</option>
+                  <option value="3.95" selected>Tier 2 (201–400 หน่วย 3.95 ฿)</option>
+                  <option value="5.10">Tier 3 (401+ หน่วย ~5.10 ฿)</option>
+                </select>
               </div>
               <div>
-                <label class="text-xs font-semibold text-slate-600 block mb-2">สัดส่วนใช้ไฟกลางวัน (%)</label>
-                <select id="dayRatio" class="w-full bg-white border border-slate-300 text-slate-800 text-sm rounded-lg p-2.5 focus:border-brand-orange focus:outline-none" onchange="runCalculator()">
-                  <option value="40">บ้านพัก (40%)</option>
-                  <option value="60">ออฟฟิศ (60%)</option>
-                  <option value="80" selected>โรงงาน (80%)</option>
+                <label class="text-xs font-semibold text-slate-600 block mb-1">กำลังแผง (Watt)</label>
+                <select id="panelWatt" class="w-full bg-white border border-slate-300 text-slate-800 text-xs rounded-lg p-2.5 focus:border-brand-orange focus:outline-none" onchange="runAdvancedCalculator()">
+                  <option value="580" selected>แผง 580W (มาตรฐาน)</option>
+                  <option value="600">แผง 600W (Tier 1)</option>
                 </select>
               </div>
             </div>
 
-            <div>
-              <label class="text-xs font-semibold text-slate-600 block mb-2">ชั่วโมงแดดเฉลี่ย (PSH)</label>
-              <select id="pshValue" class="w-full bg-white border border-slate-300 text-slate-800 text-sm rounded-lg p-2.5 focus:border-brand-orange focus:outline-none" onchange="runCalculator()">
-                <option value="4.8">กทม. / ภาคกลาง (4.8 ชม.)</option>
-                <option value="5.1">ภาคอีสาน (5.1 ชม.)</option>
-                <option value="4.6">ภาคใต้ (4.6 ชม.)</option>
-              </select>
+            <!-- สัดส่วนใช้ไฟกลางวัน จ-ศ และ ส-อา -->
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="text-xs font-semibold text-slate-600 block mb-1">ใช้ไฟกลางวัน จ–ศ (%)</label>
+                <select id="monFriRatio" class="w-full bg-white border border-slate-300 text-slate-800 text-xs rounded-lg p-2.5 focus:border-brand-orange focus:outline-none" onchange="runAdvancedCalculator()">
+                  <option value="30">บ้านพัก (30%)</option>
+                  <option value="50" selected>ออฟฟิศ/ทั่วไป (50%)</option>
+                  <option value="80">โรงงาน (80%)</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-xs font-semibold text-slate-600 block mb-1">ใช้ไฟกลางวัน ส–อา (%)</label>
+                <select id="satSunRatio" class="w-full bg-white border border-slate-300 text-slate-800 text-xs rounded-lg p-2.5 focus:border-brand-orange focus:outline-none" onchange="runAdvancedCalculator()">
+                  <option value="50">บ้านพัก (50%)</option>
+                  <option value="70" selected>มาตรฐาน (70%)</option>
+                  <option value="90">สูงพิเศษ (90%)</option>
+                </select>
+              </div>
             </div>
 
-            <div>
-              <label class="text-xs font-semibold text-slate-600 block mb-2">ขนาดแผงโซล่าเซลล์</label>
-              <select id="panelWatt" class="w-full bg-white border border-slate-300 text-slate-800 text-sm rounded-lg p-2.5 focus:border-brand-orange focus:outline-none" onchange="runCalculator()">
-                <option value="600">แผง 600W (มาตรฐาน)</option>
-                <option value="700">แผง 700W (ประสิทธิภาพสูง)</option>
-              </select>
+            <!-- จังหวัด / ชั่วโมงแดด (PSH) -->
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="text-xs font-semibold text-slate-600 block mb-1">ชั่วโมงแดด (PSH)</label>
+                <select id="pshValue" class="w-full bg-white border border-slate-300 text-slate-800 text-xs rounded-lg p-2.5 focus:border-brand-orange focus:outline-none" onchange="runAdvancedCalculator()">
+                  <option value="4.8">กทม. / ภาคกลาง (4.8 ชม.)</option>
+                  <option value="5.1">ภาคอีสาน / แดดจัด (5.1 ชม.)</option>
+                  <option value="4.6">ภาคใต้ / ฝนชุก (4.6 ชม.)</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-xs font-semibold text-slate-600 block mb-1">Net Billing (ขายไฟคืน)</label>
+                <select id="netBilling" class="w-full bg-white border border-slate-300 text-slate-800 text-xs rounded-lg p-2.5 focus:border-brand-orange focus:outline-none" onchange="runAdvancedCalculator()">
+                  <option value="0">ปิด (ไม่ขายไฟคืน)</option>
+                  <option value="2.20" selected>เปิด (รับซื้อ 2.20 ฿/หน่วย)</option>
+                </select>
+              </div>
             </div>
           </div>
 
-          <!-- Outputs & Button -->
-          <div class="lg:col-span-7 flex flex-col justify-between">
+          <!-- Outputs & Results -->
+          <div class="lg:col-span-6 flex flex-col justify-between bg-slate-900 text-white p-6 rounded-2xl">
             <div>
-              <h3 class="text-brand-navy text-sm font-bold border-b border-slate-200 pb-2 mb-4">ผลการประเมินสเปกระบบ</h3>
-              <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
-                <div class="bg-blue-50/70 p-4 rounded-xl border border-blue-100 text-center">
-                  <span class="text-[11px] text-slate-500 block mb-1">จำนวนแผงแนะนำ</span>
-                  <span id="resPanels" class="text-3xl font-bold text-brand-orange">16</span> <span class="text-xs text-slate-500">แผง</span>
+              <h3 class="text-brand-yellow text-sm font-bold border-b border-slate-800 pb-2 mb-4">รายงานผลการคำนวณ (Savings Report)</h3>
+              
+              <div class="grid grid-cols-3 gap-3 mb-5">
+                <div class="bg-slate-800 p-3 rounded-xl text-center border border-slate-700">
+                  <span class="text-[10px] text-slate-400 block mb-1">จำนวนแผงที่ต้องติด</span>
+                  <span id="resPanels" class="text-2xl font-bold text-brand-yellow">10</span> <span class="text-xs text-slate-400">แผง</span>
                 </div>
-                <div class="bg-blue-50/70 p-4 rounded-xl border border-blue-100 text-center">
-                  <span class="text-[11px] text-slate-500 block mb-1">ขนาดติดตั้งรวม</span>
-                  <span id="resCapacity" class="text-3xl font-bold text-brand-navy">9.6</span> <span class="text-xs text-slate-500">kWp</span>
+                <div class="bg-slate-800 p-3 rounded-xl text-center border border-slate-700">
+                  <span class="text-[10px] text-slate-400 block mb-1">ขนาดระบบ (kWp)</span>
+                  <span id="resCapacity" class="text-2xl font-bold text-white">5.8</span> <span class="text-xs text-slate-400">kWp</span>
                 </div>
-                <div class="bg-blue-50/70 p-4 rounded-xl border border-blue-100 text-center">
-                  <span class="text-[11px] text-slate-500 block mb-1">พื้นที่หลังคา</span>
-                  <span id="resArea" class="text-3xl font-bold text-brand-navy">40</span> <span class="text-xs text-slate-500">ตร.ม.</span>
+                <div class="bg-slate-800 p-3 rounded-xl text-center border border-slate-700">
+                  <span class="text-[10px] text-slate-400 block mb-1">ผลิตไฟต่อเดือน</span>
+                  <span id="resMonthlyKwh" class="text-xl font-bold text-emerald-400">650</span> <span class="text-[10px] text-slate-400">kWh</span>
                 </div>
               </div>
 
-              <h3 class="text-emerald-600 text-sm font-bold border-b border-slate-200 pb-2 mb-4">ผลตอบแทนการลงทุน (ROI)</h3>
               <div class="grid grid-cols-2 gap-3 mb-6">
-                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
-                  <span class="text-[11px] text-slate-500 block">ประหยัดค่าไฟ/เดือน</span>
-                  <div class="mt-1"><span id="resMonthlySave" class="text-xl font-bold text-emerald-600">฿5,198</span></div>
+                <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                  <span class="text-[11px] text-slate-400 block">ประหยัดค่าไฟต่อปี</span>
+                  <div class="mt-1"><span id="resYearlySave" class="text-2xl font-bold text-emerald-400">฿35,000</span></div>
                 </div>
-                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
-                  <span class="text-[11px] text-slate-500 block">คืนทุนโดยประมาณ</span>
-                  <div class="mt-1"><span id="resPayback" class="text-xl font-bold text-brand-orange">4.5</span> <span class="text-xs text-slate-500">ปี</span></div>
+                <div class="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                  <span class="text-[11px] text-slate-400 block">ระยะเวลาคืนทุนโดยประมาณ</span>
+                  <div class="mt-1"><span id="resPayback" class="text-2xl font-bold text-brand-orange">4.2</span> <span class="text-xs text-slate-400">ปี</span></div>
                 </div>
               </div>
             </div>
 
-            <!-- ปุ่มกดเปิดใบเสนอราคา -->
-            <button onclick="openQuoteModal()" class="w-full bg-brand-orange hover:bg-orange-600 text-white font-bold text-sm py-4 rounded-xl shadow-lg transition uppercase tracking-wider flex items-center justify-center gap-2">
+            <!-- ปุ่มเปิด Modal ใบเสนอราคา -->
+            <button onclick="openQuoteModal()" class="w-full bg-brand-yellow hover:bg-yellow-400 text-brand-navy font-bold text-sm py-3.5 rounded-xl shadow-lg transition uppercase tracking-wider flex items-center justify-center gap-2">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
               ออกใบเสนอราคา / ส่งผลประเมินทันที
             </button>
@@ -341,64 +362,75 @@
     }
     closeMenuBtn.addEventListener('click', closeMenu);
 
-    // Global variables สำหรับเก็บค่าคำนวณส่งเข้า Modal
     let globalData = {};
 
-    function runCalculator() {
+    function runAdvancedCalculator() {
       const bill = parseFloat(document.getElementById('inputBill').value);
-      const rate = parseFloat(document.getElementById('inputRate').value) || 4.7;
-      const dayRatio = parseFloat(document.getElementById('dayRatio').value) / 100;
-      const psh = parseFloat(document.getElementById('pshValue').value);
+      const rate = parseFloat(document.getElementById('tierRate').value);
       const panelWatt = parseFloat(document.getElementById('panelWatt').value);
+      const monFri = parseFloat(document.getElementById('monFriRatio').value) / 100;
+      const satSun = parseFloat(document.getElementById('satSunRatio').value) / 100;
+      const psh = parseFloat(document.getElementById('pshValue').value);
+      const netBillingRate = parseFloat(document.getElementById('netBilling').value);
       
       document.getElementById('dispBill').innerText = '฿' + bill.toLocaleString();
 
+      // ค่าไฟเฉลี่ยวันทำงาน 5 วัน และวันหยุด 2 วัน
+      const avgDayRatio = (monFri * 5 + satSun * 2) / 7;
+
       const monthlyKwh = bill / rate;
       const dailyKwh = monthlyKwh / 30;
-      const targetDailyKwh = dailyKwh * dayRatio;
+      const targetDailyKwh = dailyKwh * avgDayRatio;
 
+      // สูตรคำนวณจำนวนแผง (System Loss 80% หรือ 0.8)
       const exactKwpNeeded = targetDailyKwh / (psh * 0.8);
       let numPanels = Math.ceil((exactKwpNeeded * 1000) / panelWatt);
-      if(numPanels < 4) numPanels = 4; 
+      if(numPanels < 4) numPanels = 4;
 
       const actualKwp = (numPanels * panelWatt) / 1000;
-      const roofArea = numPanels * 2.5;
-
+      
+      // ผลผลิตไฟฟ้า
       const monthlyProduction = actualKwp * psh * 30 * 0.8;
       const monthlySavings = monthlyProduction * rate;
-      const yearlySavings = monthlySavings * 12;
+      
+      // เพิ่มรายได้ Net Billing (ถ้าเปิดใช้งาน)
+      let netBillingIncome = 0;
+      if(netBillingRate > 0) {
+        // สมมติมีส่วนเกินขายคืน 20% ของที่ผลิตได้
+        netBillingIncome = (monthlyProduction * 0.20) * netBillingRate;
+      }
 
-      let costPerKwp = 28000;
-      if (actualKwp > 15) costPerKwp = 25000;
-      if (actualKwp > 50) costPerKwp = 22000;
+      const yearlySavings = (monthlySavings + netBillingIncome) * 12;
+
+      let costPerKwp = 27000;
+      if (actualKwp > 10) costPerKwp = 24000;
       const totalSystemCost = actualKwp * costPerKwp;
 
       let payback = totalSystemCost / yearlySavings;
-      if (payback > 10) payback = 9.9; 
+      if (payback > 10) payback = 9.9;
 
-      // เก็บค่าไว้ใช้ใน Modal
+      // เก็บค่าสำหรับ Modal
       globalData = {
+        tier: document.getElementById('tierRate').selectedOptions[0].text,
         capacity: actualKwp.toFixed(1) + ' kWp',
         panels: numPanels.toLocaleString() + ' แผง',
-        area: roofArea.toLocaleString() + ' ตร.ม.',
         yearlySave: '฿' + Math.round(yearlySavings).toLocaleString(),
         payback: payback.toFixed(1) + ' ปี',
         totalCost: '฿' + Math.round(totalSystemCost).toLocaleString()
       };
 
-      // แสดงผลหน้าหลัก
+      // แสดงผล
       document.getElementById('resPanels').innerText = numPanels.toLocaleString();
       document.getElementById('resCapacity').innerText = actualKwp.toFixed(1);
-      document.getElementById('resArea').innerText = roofArea.toLocaleString();
-      document.getElementById('resMonthlySave').innerText = '฿' + Math.round(monthlySavings).toLocaleString();
+      document.getElementById('resMonthlyKwh').innerText = Math.round(monthlyProduction).toLocaleString();
+      document.getElementById('resYearlySave').innerText = '฿' + Math.round(yearlySavings).toLocaleString();
       document.getElementById('resPayback').innerText = payback.toFixed(1);
     }
 
-    // ฟังก์ชันเปิด/ปิด Modal ใบเสนอราคา
     function openQuoteModal() {
+      document.getElementById('modalTier').innerText = globalData.tier;
       document.getElementById('modalCapacity').innerText = globalData.capacity;
       document.getElementById('modalPanels').innerText = globalData.panels;
-      document.getElementById('modalArea').innerText = globalData.area;
       document.getElementById('modalYearlySave').innerText = globalData.yearlySave;
       document.getElementById('modalPayback').innerText = globalData.payback;
       document.getElementById('modalTotalCost').innerText = globalData.totalCost;
@@ -420,11 +452,11 @@
       e.preventDefault();
       const name = document.getElementById('clientName').value;
       const phone = document.getElementById('clientPhone').value;
-      alert(`ขอบคุณครับคุณ ${name} ระบบได้บันทึกข้อมูลและส่งใบเสนอราคาเบื้องต้นไปยังเบอร์ ${phone} เรียบร้อยแล้ว เจ้าหน้าที่ฝ่ายขาย (คุณภัค) จะติดต่อกลับอย่างเร่งด่วนครับ!`);
+      alert(`ขอบคุณครับคุณ ${name} ระบบได้ออกใบเสนอราคาและส่งรายละเอียดให้คุณ ${phone} เรียบร้อยแล้ว เจ้าหน้าที่ฝ่ายขาย (คุณภัค 065-605-9949) จะติดต่อกลับอย่างเร่งด่วนครับ!`);
       closeQuoteModal();
     }
 
-    window.addEventListener('DOMContentLoaded', runCalculator);
+    window.addEventListener('DOMContentLoaded', runAdvancedCalculator);
   </script>
 </body>
 </html>
