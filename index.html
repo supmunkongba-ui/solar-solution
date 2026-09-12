@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DJP FUTURE ENERGY x INSIDER SYSTEM - เครื่องคำนวณโซลาร์เซลล์อัจฉริยะ</title>
+  <title>DJP FUTURE ENERGY x INSIDER SYSTEM - ศูนย์รวมระบบโซล่าเซลล์ครบวงจรระดับพรีเมียม</title>
   <!-- Tailwind CSS & Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,14 +15,14 @@
         extend: {
           fontFamily: { kanit: ['Kanit', 'sans-serif'] },
           colors: {
-            brand: { dark: '#080e1a', card: '#0f172a', primary: '#f59e0b', cyan: '#38bdf8' }
+            brand: { dark: '#060a12', card: '#0f172a', primary: '#f59e0b', cyan: '#38bdf8' }
           }
         }
       }
     }
   </script>
   <style> 
-    body { font-family: 'Kanit', sans-serif; background-color: #080e1a; color: #cbd5e1; } 
+    body { font-family: 'Kanit', sans-serif; background-color: #060a12; color: #cbd5e1; } 
     .no-scroll { overflow: hidden; }
   </style>
 </head>
@@ -83,9 +83,9 @@
   </div>
 
   <!-- ==============================
-       Mobile Menu Drawer (ตรงตามเมนูในภาพ)
+       Mobile Menu Drawer
        ============================== -->
-  <div id="mobileMenu" class="fixed inset-0 z-[200] hidden flex-col bg-[#080e1a] overflow-y-auto text-slate-200">
+  <div id="mobileMenu" class="fixed inset-0 z-[200] hidden flex-col bg-[#060a12] overflow-y-auto text-slate-200">
     <div class="bg-slate-900 text-white flex justify-between items-center px-4 h-16 border-b border-slate-800">
       <span class="font-bold text-lg">เมนูหลัก (Menu)</span>
       <button onclick="toggleMobileMenu()" class="p-2">
@@ -99,7 +99,7 @@
       <a href="#pv-panel" class="px-6 py-4 hover:bg-slate-900" onclick="toggleMobileMenu()">แผงโซลาร์เซลล์</a>
       <a href="#calculator" class="px-6 py-4 hover:bg-slate-900 text-amber-400 font-bold" onclick="toggleMobileMenu()">เครื่องคำนวณโซล่าเซลล์</a>
       <a href="#about" class="px-6 py-4 hover:bg-slate-900" onclick="toggleMobileMenu()">เกี่ยวกับเรา</a>
-      <a href="#blog" class="px-6 py-4 hover:bg-slate-900" onclick="toggleMobileMenu()">บทความความรู้</a>
+      <a href="#blog" class="px-6 py-4 hover:bg-slate-900" onclick="toggleMobileMenu()">บทความสาระน่ารู้</a>
       <a href="#contact" class="px-6 py-4 hover:bg-slate-900" onclick="toggleMobileMenu()">ติดต่อเรา & แผนที่</a>
     </div>
   </div>
@@ -156,20 +156,24 @@
   <!-- ==============================
        Hero Section
        ============================== -->
-  <section class="relative bg-gradient-to-b from-[#0f172a] to-[#080e1a] py-16 border-b border-slate-800 text-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
-      <span class="bg-amber-500/10 text-amber-400 border border-amber-500/30 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-4 inline-block">
-        POWERING A BETTER FUTURE
+  <section class="relative bg-gradient-to-b from-[#0f172a] to-[#060a12] py-20 border-b border-slate-800 text-slate-200 overflow-hidden">
+    <div class="absolute inset-0 opacity-20 bg-cover bg-center mix-blend-overlay" style="background-image: url('https://images.unsplash.com/photo-1509391365360-2e959784a276?q=80&w=2072&auto=format&fit=crop');"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-4xl">
+      <span class="bg-amber-500/10 text-amber-400 border border-amber-500/30 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-6 inline-block">
+        POWERING A BETTER FUTURE · ONE STOP SERVICE
       </span>
-      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
-        ผู้นำด้านอุปกรณ์ <span class="text-amber-400">SOLAR</span> ระดับชั้นนำ
+      <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
+        จำหน่ายและติดตั้ง <span class="text-amber-400">โซลาร์เซลล์ ครบวงจร</span> ทั่วประเทศ
       </h1>
-      <p class="text-sm sm:text-base text-slate-400 leading-relaxed mb-6">
-        จัดจำหน่ายอุปกรณ์โซลาร์เซลล์ครบวงจร คุณภาพระดับโลก ครบครัน มั่นใจ บริการมืออาชีพ
+      <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto mb-8">
+        ผู้นำด้านอุปกรณ์พลังงานแสงอาทิตย์ระดับชั้นนำ ครบครัน มั่นใจ บริการมืออาชีพ พร้อมยกระดับธุรกิจและบ้านพักอาศัยสู่ความประหยัดอย่างยั่งยืน
       </p>
-      <div class="flex justify-center gap-3">
-        <a href="#calculator" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-8 py-3.5 rounded-xl shadow-lg transition text-sm uppercase tracking-wide">
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="#calculator" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-8 py-4 rounded-xl shadow-lg transition text-sm uppercase tracking-wide">
           คำนวณค่าไฟ & ออกใบเสนอราคา
+        </a>
+        <a href="#contact" class="bg-slate-800 hover:bg-slate-700 text-white font-bold px-8 py-4 rounded-xl border border-slate-700 transition text-sm uppercase tracking-wide">
+          ปรึกษาวิศวกรฟรี
         </a>
       </div>
     </div>
@@ -178,9 +182,9 @@
   <!-- ==============================
        Main Calculator Section
        ============================== -->
-  <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-    <div class="text-center mb-8">
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-2">เครื่องคำนวณโซลาร์เซลล์อัจฉริยะ</h2>
+  <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl font-extrabold text-white mb-2">เครื่องคำนวณโซลาร์เซลล์อัจฉริยะ</h2>
       <p class="text-amber-400 text-xs tracking-widest uppercase font-semibold">อัตราใหม่ ก้าวหน้า 3 ระดับ · NET BILLING 2.20 บ./หน่วย</p>
     </div>
 
@@ -190,22 +194,25 @@
         <span class="bg-emerald-500/20 text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">TIER 1</span>
         <p class="text-xs text-slate-400 mt-3">1 - 200 หน่วย / เดือน</p>
         <p class="text-2xl font-black text-emerald-400 mt-1">~2.80 ฿</p>
+        <p class="text-[11px] text-slate-500 mt-1">อุดหนุน - ลดลง ~20%</p>
       </div>
       <div class="bg-[#0f172a] border-2 border-amber-500/80 p-5 rounded-2xl text-center shadow-lg relative">
         <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-slate-950 text-[9px] font-bold px-2.5 py-0.5 rounded uppercase">ยอดนิยม</span>
         <span class="bg-amber-500/20 text-amber-400 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">TIER 2</span>
         <p class="text-xs text-slate-400 mt-3">201 - 400 หน่วย / เดือน</p>
         <p class="text-2xl font-black text-amber-400 mt-1">3.95 ฿</p>
+        <p class="text-[11px] text-slate-500 mt-1">ปกติ - ยังได้ส่วนลด 200 หน่วยแรก</p>
       </div>
       <div class="bg-[#0f172a] border border-slate-800 p-5 rounded-2xl text-center shadow-md">
         <span class="bg-rose-500/20 text-rose-400 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">TIER 3</span>
         <p class="text-xs text-slate-400 mt-3">401+ หน่วย / เดือน</p>
         <p class="text-2xl font-black text-rose-400 mt-1">~5.10 ฿</p>
+        <p class="text-[11px] text-slate-500 mt-1">ก้าวหน้า - โซลาร์คุ้มที่สุด!</p>
       </div>
     </div>
 
     <!-- Calculator Box -->
-    <div id="calculator" class="bg-[#0f172a] border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6 text-slate-200">
+    <div id="calculator" class="bg-[#0f172a] border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl space-y-6 text-slate-200">
       <div>
         <h3 class="text-amber-400 font-bold text-sm mb-3">// STEP 0 - TIER CHECK (ตรวจสอบระดับค่าไฟ)</h3>
         <label class="text-xs text-slate-300 block mb-2 font-semibold">ค่าไฟเฉลี่ยต่อเดือน (บาท รวม VAT 7%):</label>
@@ -301,108 +308,291 @@
   </section>
 
   <!-- ==============================
-       Detailed Sections Corresponding to Mobile Menu
+       1. โซล่าเซลล์ครบวงจร (Services All) - ขยายเนื้อหาเชิงลึก
        ============================== -->
-
-  <!-- 1. โซล่าเซลล์ครบวงจร (Services All) -->
-  <section id="services-all" class="py-16 bg-[#060a12] border-t border-slate-800 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-5xl mx-auto space-y-6">
-      <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">One Stop Service</span>
-      <h2 class="text-3xl font-bold text-white">โซล่าเซลล์ครบวงจร (Solar Solutions)</h2>
+  <section id="services-all" class="py-20 bg-[#060a12] border-t border-slate-800 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto space-y-8">
+      <div class="border-l-4 border-amber-500 pl-4">
+        <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Turnkey EPC Solutions</span>
+        <h2 class="text-3xl font-bold text-white mt-1">บริการติดตั้งโซล่าเซลล์ครบวงจร (One Stop Service)</h2>
+      </div>
       <p class="text-slate-300 text-sm leading-relaxed">
-        เราให้บริการติดตั้งระบบพลังงานแสงอาทิตย์แบบเบ็ดเสร็จ (Turnkey EPC) ตั้งแต่กระบวนการสำรวจหน้างาน ออกแบบระบบวิศวกรรม จัดหาอุปกรณ์มาตรฐานสากล ดำเนินเรื่องเอกสารขออนุญาตขนานไฟกับการไฟฟ้า จนถึงบริการหลังการขายล้างแผงและตรวจเช็คระบบอย่างต่อเนื่อง
+        เราคือผู้เชี่ยวชาญด้านการออกแบบและติดตั้งระบบพลังงานแสงอาทิตย์บนหลังคา (Solar Rooftop) แบบครบวงจร ตั้งแต่ระดับครัวเรือน โฮมออฟฟิศ ไปจนถึงอาคารธุรกิจขนาดใหญ่ ด้วยกระบวนการทำงานที่เป็นมาตรฐานสากล ทีมงานวิศวกรและช่างผู้ชำนาญการจะดูแลท่านในทุกขั้นตอน:
       </p>
+      
+      <div class="grid md:grid-cols-3 gap-6 pt-4">
+        <div class="bg-[#0f172a] p-6 rounded-2xl border border-slate-800 space-y-3">
+          <div class="w-10 h-10 bg-amber-500/20 text-amber-400 rounded-xl flex items-center justify-center font-bold">01</div>
+          <h4 class="text-white font-bold text-base">สำรวจและออกแบบวิศวกรรม</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">สำรวจโครงสร้างหลังคาด้วยโดรน คำนวณองศารับแสง และจำลองแบบ 3 มิติ เพื่อประสิทธิภาพสูงสุดในการผลิตไฟฟ้า</p>
+        </div>
+        <div class="bg-[#0f172a] p-6 rounded-2xl border border-slate-800 space-y-3">
+          <div class="w-10 h-10 bg-amber-500/20 text-amber-400 rounded-xl flex items-center justify-center font-bold">02</div>
+          <h4 class="text-white font-bold text-base">ติดตั้งและขออนุญาต</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">ดำเนินการติดตั้งด้วยอุปกรณ์มาตรฐาน พร้อมจัดการเดินเรื่องเอกสารขออนุญาตขนานไฟกับการไฟฟ้าและการกำกับกิจการพลังงานให้เสร็จสรรพ</p>
+        </div>
+        <div class="bg-[#0f172a] p-6 rounded-2xl border border-slate-800 space-y-3">
+          <div class="w-10 h-10 bg-amber-500/20 text-amber-400 rounded-xl flex items-center justify-center font-bold">03</div>
+          <h4 class="text-white font-bold text-base">บริการหลังการขาย 24/7</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">ดูแลระบบผ่านแอปพลิเคชันเรียลไทม์ พร้อมบริการล้างแผงและตรวจเช็คประสิทธิภาพระบบไฟฟ้าทุกปีตลอดอายุสัญญา</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- 2. โซล่าเซลล์โรงงาน (Industrial Solar) -->
-  <section id="services-factory" class="py-16 bg-[#080e1a] border-t border-slate-800 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-5xl mx-auto space-y-6">
-      <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Industrial & Commercial</span>
-      <h2 class="text-3xl font-bold text-white">โซล่าเซลล์โรงงาน (Industrial Solar Rooftop)</h2>
+  <!-- ==============================
+       2. โซล่าเซลล์โรงงาน (Industrial Solar)
+       ============================== -->
+  <section id="services-factory" class="py-20 bg-[#080e1a] border-t border-slate-800 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto space-y-8">
+      <div class="border-l-4 border-amber-500 pl-4">
+        <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Commercial & Industrial (C&I)</span>
+        <h2 class="text-3xl font-bold text-white mt-1">โซล่าเซลล์โรงงานและอุตสาหกรรมขนาดใหญ่</h2>
+      </div>
       <p class="text-slate-300 text-sm leading-relaxed">
-        โซลูชันพิเศษสำหรับโรงงานอุตสาหกรรมและคลังสินค้า ช่วยลดต้นทุนค่าไฟฟ้าช่วงกลางวันสูงสุดถึง 60% พร้อมรองรับสิทธิประโยชน์การลงทุนจาก BOI และเตรียมความพร้อมองค์กรสู่มาตรฐานการลดการปล่อยก๊าซเรือนกระจก (CBAM / Carbon Footprint)
+        ในยุคที่ต้นทุนพลังงานผันผวนและมาตรการสิ่งแวดล้อมเข้มงวดขึ้น การติดตั้ง Solar Rooftop สำหรับโรงงานอุตสาหกรรม คลังสินค้า และสถานประกอบการ คือก้าวสำคัญในการลดต้นทุนการผลิตระยะยาว:
       </p>
+
+      <div class="grid sm:grid-cols-2 gap-6 pt-2">
+        <div class="bg-[#0f172a] p-6 rounded-2xl border border-slate-800 space-y-2">
+          <h4 class="text-amber-400 font-bold text-base">ลดต้นทุนค่าไฟฟ้าสูงสุด 60%</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">ผลิตกระแสไฟฟ้าใช้เองในช่วงกลางวัน ซึ่งเป็นช่วงที่โรงงานมีความต้องการใช้พลังงานสูง ช่วยลดบิลค่าไฟรายเดือนได้อย่างมหาศาล</p>
+        </div>
+        <div class="bg-[#0f172a] p-6 rounded-2xl border border-slate-800 space-y-2">
+          <h4 class="text-amber-400 font-bold text-base">สิทธิประโยชน์ BOI</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">สนับสนุนการลงทุนพลังงานทดแทนด้วยสิทธิประโยชน์ยกเว้นภาษีเงินได้นิติบุคคลสูงสุด 50% จากสำนักงานคณะกรรมการส่งเสริมการลงทุน</p>
+        </div>
+        <div class="bg-[#0f172a] p-6 rounded-2xl border border-slate-800 space-y-2">
+          <h4 class="text-amber-400 font-bold text-base">รองรับกฎหมาย CBAM</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">เตรียมความพร้อมองค์กรในการส่งออกสินค้าไปต่างประเทศ ด้วยการลดการปล่อยก๊าซเรือนกระจก (Carbon Footprint Reduction)</p>
+        </div>
+        <div class="bg-[#0f172a] p-6 rounded-2xl border border-slate-800 space-y-2">
+          <h4 class="text-amber-400 font-bold text-base">ทางเลือกการลงทุน PPA / Zero CAPEX</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">มีรูปแบบบริการลงทุนให้ฟรี (Private PPA) โรงงานไม่ต้องใช้เงินลงทุนเริ่มต้น รับส่วนลดค่าไฟทันทีตั้งแต่วันแรกที่เปิดใช้งาน</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- 3. Inverter & Battery -->
-  <section id="inverter-battery" class="py-16 bg-[#060a12] border-t border-slate-800 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-5xl mx-auto space-y-6">
-      <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">High Performance Hardware</span>
-      <h2 class="text-3xl font-bold text-white">Inverter & Battery (อินเวอร์เตอร์และแบตเตอรี่สำรอง)</h2>
+  <!-- ==============================
+       3. Inverter & Battery
+       ============================== -->
+  <section id="inverter-battery" class="py-20 bg-[#060a12] border-t border-slate-800 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto space-y-8">
+      <div class="border-l-4 border-amber-500 pl-4">
+        <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">High Performance Hardware</span>
+        <h2 class="text-3xl font-bold text-white mt-1">Inverter & Battery (อินเวอร์เตอร์และแบตเตอรี่จัดเก็บ)</h2>
+      </div>
       <p class="text-slate-300 text-sm leading-relaxed">
-        คัดสรรอินเวอร์เตอร์และชุดแบตเตอรี่จัดเก็บพลังงานจากแบรนด์ระดับโลก อาทิ <strong>HUAWEI, SUNGROW, DYE และ BYD</strong> มั่นใจในความเสถียร ประสิทธิภาพการแปลงไฟสูง และระบบมอนิเตอร์สถานะผ่านแอปพลิเคชันแบบเรียลไทม์ 24 ชั่วโมง
+        หัวใจสำคัญของระบบโซล่าเซลล์คืออุปกรณ์แปลงกระแสไฟฟ้าและจัดเก็บพลังงาน เราคัดสรรแบรนด์ระดับโลกที่ได้รับการยอมรับในระดับสากล:
       </p>
+
+      <div class="grid md:grid-cols-3 gap-6 pt-4">
+        <div class="bg-[#0f172a] p-6 rounded-2xl border border-slate-800 space-y-3">
+          <h4 class="text-amber-400 font-bold text-base">HUAWEI & SUNGROW</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">อินเวอร์เตอร์อัจฉริยะประสิทธิภาพสูง (String Inverter) แปลงไฟสูญเสียน้อย มีระบบป้องกันความปลอดภัยระดับสากล (Arc Fault Protection)</p>
+        </div>
+        <div class="bg-[#0f172a] p-6 rounded-2xl border border-slate-800 space-y-3">
+          <h4 class="text-amber-400 font-bold text-base">BYD & DYE Battery</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">แบตเตอรี่ลิเธียมไอออนฟอสเฟต (LiFePO4) อายุการใช้งานยาวนาน ปลอดภัยสูง รองรับระบบ Hybrid สำรองไฟยามฉุกเฉิน</p>
+        </div>
+        <div class="bg-[#0f172a] p-6 rounded-2xl border border-slate-800 space-y-3">
+          <h4 class="text-amber-400 font-bold text-base">Smart Monitoring 24h</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">ติดตามการผลิตไฟฟ้า สถานะแบตเตอรี่ และการประหยัดพลังงานได้แบบเรียลไทม์ผ่านแอปพลิเคชันบนมือถือของคุณ</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- 4. แผงโซลาร์เซลล์ (PV Panel) -->
-  <section id="pv-panel" class="py-16 bg-[#080e1a] border-t border-slate-800 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-5xl mx-auto space-y-6">
-      <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Tier 1 Solar Panels</span>
-      <h2 class="text-3xl font-bold text-white">แผงโซลาร์เซลล์คุณภาพสูง (Tier 1 Modules)</h2>
+  <!-- ==============================
+       4. แผงโซลาร์เซลล์ (PV Panel)
+       ============================== -->
+  <section id="pv-panel" class="py-20 bg-[#080e1a] border-t border-slate-800 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto space-y-8">
+      <div class="border-l-4 border-amber-500 pl-4">
+        <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Tier 1 Modules</span>
+        <h2 class="text-3xl font-bold text-white mt-1">แผงโซลาร์เซลล์คุณภาพสูง (Tier 1 Solar Panels)</h2>
+      </div>
       <p class="text-slate-300 text-sm leading-relaxed">
-        เลือกใช้เฉพาะแผงโซลาร์เซลล์เกรด Tier 1 (เช่น LONGi, Trina Solar, AIKO, Jinko) ชนิด Mono-Perc / Bifacial กำลังผลิตสูง 580W - 600W+ ทนทานต่อลมฟ้าอากาศ รับประกันประสิทธิภาพการผลิตไฟฟ้ายาวนานถึง 25 - 30 ปี
+        เราเลือกใช้เฉพาะแผงโซลาร์เซลล์มาตรฐาน Tier 1 ที่ผ่านการรับรองจากสถาบันระดับโลก (LONGi, Trina Solar, AIKO, Jinko Solar) โดดเด่นด้วยเทคโนโลยีล่าสุด:
       </p>
+
+      <div class="grid sm:grid-cols-3 gap-6 pt-2">
+        <div class="bg-[#0f172a] p-6 rounded-2xl border border-slate-800 space-y-2">
+          <h4 class="text-white font-bold text-sm">Mono Perc & Bifacial</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">รับแสงได้ทั้งสองด้าน เพิ่มประสิทธิภาพการผลิตพลังงานแม้ในวันที่มีแสงแดดน้อยหรือฟ้าครึ้ม</p>
+        </div>
+        <div class="bg-[#0f172a] p-6 rounded-2xl border border-slate-800 space-y-2">
+          <h4 class="text-white font-bold text-sm">High Output 580W - 600W+</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">กำลังผลิตสูงต่อแผ่น ใช้พื้นที่ติดตั้งน้อยลงแต่ได้ปริมาณไฟฟ้าที่คุ้มค่ามากกว่าเดิม</p>
+        </div>
+        <div class="bg-[#0f172a] p-6 rounded-2xl border border-slate-800 space-y-2">
+          <h4 class="text-white font-bold text-sm">Warranty 25-30 Years</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">มั่นใจในความทนทาน พร้อมการรับประกันประสิทธิภาพการผลิตไฟฟ้ายาวนานถึง 25 - 30 ปีเต็ม</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- 5. เกี่ยวกับเรา (About Us) -->
-  <section id="about" class="py-16 bg-[#060a12] border-t border-slate-800 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-5xl mx-auto space-y-6">
-      <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Corporate Profile</span>
-      <h2 class="text-3xl font-bold text-white">เกี่ยวกับเรา (About DJP Future Energy)</h2>
+  <!-- ==============================
+       5. เกี่ยวกับเรา (About Us)
+       ============================== -->
+  <section id="about" class="py-20 bg-[#060a12] border-t border-slate-800 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto space-y-8">
+      <div class="border-l-4 border-amber-500 pl-4">
+        <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Our Story & Vision</span>
+        <h2 class="text-3xl font-bold text-white mt-1">เกี่ยวกับเรา (DJP Future Energy)</h2>
+      </div>
       <p class="text-slate-300 text-sm leading-relaxed">
-        บริษัท ดีเจพี ฟิวเจอร์ เอ็นเนอร์ยี่ (ไทยแลนด์) จำกัด ผู้นำด้านอุปกรณ์และระบบโซล่าเซลล์ครบวงจร มุ่งมั่นขับเคลื่อนอนาคตด้วยพลังงานสะอาด ภายใต้สโลแกน <em>"ครบจบในที่เดียว เรื่องโซลาร์ คุณภาพ"</em> ด้วยประสบการณ์และผลงานติดตั้งมากมายทั่วประเทศ
+        <strong>บริษัท ดีเจพี ฟิวเจอร์ เอ็นเนอร์ยี่ (ไทยแลนด์) จำกัด</strong> ก่อตั้งขึ้นด้วยความมุ่งมั่นที่จะเป็นฟันเฟืองสำคัญในการขับเคลื่อนประเทศไทยสู่สังคมคาร์บอนต่ำ ผ่านการส่งมอบเทคโนโลยีพลังงานแสงอาทิตย์ที่มีคุณภาพสูงสุดในราคาที่เข้าถึงได้
+      </p>
+      <p class="text-slate-300 text-sm leading-relaxed">
+        ด้วยทีมผู้บริหารและวิศวกรที่มีประสบการณ์ยาวนานกว่า 5 ปี นำโดยทีมงานฝ่ายขายและการตลาดมืออาชีพ เรายึดมั่นในปรัชญา <em>"ครบจบในที่เดียว เรื่องโซลาร์ คุณภาพ"</em> ใส่ใจในความปลอดภัย ความถูกต้องตามหลักวิศวกรรม และการบริการหลังการขายที่รวดเร็วฉับไว เพื่อสร้างความพึงพอใจสูงสุดแก่ลูกค้าทุกท่าน
       </p>
     </div>
   </section>
 
   <!-- ==============================
-       Solar Rooftop Blog Section
+       Solar Rooftop Blog Section (6 หัวข้อ)
        ============================== -->
-  <section id="blog" class="py-16 bg-[#080e1a] border-t border-slate-800 px-4 sm:px-6 lg:px-8">
+  <section id="blog" class="py-20 bg-[#080e1a] border-t border-slate-800 px-4 sm:px-6 lg:px-8">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-12">
         <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Articles & Knowledge</span>
         <h2 class="text-3xl font-bold text-white mt-1">บทความสาระน่ารู้เกี่ยวกับโซล่าเซลล์</h2>
-        <p class="text-slate-400 text-sm mt-2">อัปเดตความรู้ เทคนิค และเกร็ดความรู้สำคัญในการติดตั้ง Solar Rooftop</p>
+        <p class="text-slate-400 text-sm mt-2">อัปเดตความรู้ เทคนิค และเกร็ดความรู้สำคัญในการติดตั้ง Solar Rooftop ให้คุ้มค่าที่สุด</p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-[#0f172a] border border-slate-800 rounded-3xl p-6 flex flex-col justify-between">
+        
+        <!-- บทความที่ 1 -->
+        <div class="bg-[#0f172a] border border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-amber-500/50 transition group">
           <div>
-            <span class="text-xs text-amber-400 block mb-2">💡 คู่มือการลงทุน</span>
-            <h3 class="text-base font-bold text-white mb-2">1. โซล่าเซลล์บ้านคุ้มจริงไหม? ไขข้อข้องใจระยะเวลาคืนทุน</h3>
-            <p class="text-xs text-slate-400">วิเคราะห์ความคุ้มค่า เปรียบเทียบค่าไฟก่อนและหลังติด พร้อมวิธีคำนวณจุดคุ้มทุน</p>
+            <div class="flex items-center justify-between text-xs text-amber-400 mb-3">
+              <span>💡 คู่มือการลงทุน</span>
+              <span class="text-slate-500">5 นาทีอ่าน</span>
+            </div>
+            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition mb-2">
+              1. โซล่าเซลล์บ้านคุ้มจริงไหม? ไขข้อข้องใจระยะเวลาคืนทุนในยุคค่าไฟแพง
+            </h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              วิเคราะห์ความคุ้มค่าแบบเจาะลึก เปรียบเทียบค่าไฟก่อนและหลังติด พร้อมวิธีคำนวณจุดคุ้มทุนที่บ้านพักอาศัยควรทราบ
+            </p>
           </div>
-          <a href="#calculator" class="text-amber-400 text-xs font-bold mt-6 inline-block hover:underline">คำนวณเลย &rarr;</a>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-slate-500">เผยแพร่: 2026</span>
+            <a href="#calculator" class="text-amber-400 font-bold hover:underline flex items-center gap-1">คำนวณเลย &rarr;</a>
+          </div>
         </div>
-        <div class="bg-[#0f172a] border border-slate-800 rounded-3xl p-6 flex flex-col justify-between">
+
+        <!-- บทความที่ 2 -->
+        <div class="bg-[#0f172a] border border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-amber-500/50 transition group">
           <div>
-            <span class="text-xs text-amber-400 block mb-2">⚡ นโยบายภาครัฐ</span>
-            <h3 class="text-base font-bold text-white mb-2">2. ทำความรู้จัก Net Billing นโยบายใหม่รับซื้อไฟฟ้าส่วนเกิน</h3>
-            <p class="text-xs text-slate-400">เจาะลึกเงื่อนไขรับซื้อคืน 2.20 บาท/หน่วย สำหรับบ้านและธุรกิจขนาดเล็ก</p>
+            <div class="flex items-center justify-between text-xs text-amber-400 mb-3">
+              <span>⚡ นโยบายภาครัฐ</span>
+              <span class="text-slate-500">4 นาทีอ่าน</span>
+            </div>
+            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition mb-2">
+              2. ทำความรู้จัก Net Billing นโยบายใหม่รับซื้อไฟฟ้าส่วนเกิน 2.20 บาท
+            </h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              เจาะลึกเงื่อนไขการขายไฟคืนการไฟฟ้า โควตาจำกัด และผลดีต่อบ้านหรือธุรกิจขนาดเล็กที่ผลิตไฟฟ้าเกินช่วงกลางวัน
+            </p>
           </div>
-          <a href="#calculator" class="text-amber-400 text-xs font-bold mt-6 inline-block hover:underline">ศึกษาระบบ &rarr;</a>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-slate-500">เผยแพร่: 2026</span>
+            <a href="#calculator" class="text-amber-400 font-bold hover:underline flex items-center gap-1">ศึกษาระบบ &rarr;</a>
+          </div>
         </div>
-        <div class="bg-[#0f172a] border border-slate-800 rounded-3xl p-6 flex flex-col justify-between">
+
+        <!-- บทความที่ 3 -->
+        <div class="bg-[#0f172a] border border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-amber-500/50 transition group">
           <div>
-            <span class="text-xs text-amber-400 block mb-2">🏗️ มาตรฐานวิศวกรรม</span>
-            <h3 class="text-base font-bold text-white mb-2">3. เลือกขนาด kWp ให้เหมาะกับบ้านและโรงงาน</h3>
-            <p class="text-xs text-slate-400">ไขข้อข้องใจเรื่องสัดส่วนการใช้ไฟกลางวัน และปัจจัยเรื่อง PSH แดดแต่ละภาค</p>
+            <div class="flex items-center justify-between text-xs text-amber-400 mb-3">
+              <span>🏗️ มาตรฐานวิศวกรรม</span>
+              <span class="text-slate-500">6 นาทีอ่าน</span>
+            </div>
+            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition mb-2">
+              3. เลือกขนาด kWp ให้เหมาะกับบ้านและโรงงาน: ติดเท่าไหร่ถึงจะไม่เสียเปล่า?
+            </h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              ไขข้อข้องใจเรื่องสัดส่วนการใช้ไฟกลางวัน ปัจจัยเรื่อง PSH แดดแต่ละภาค และวิธีเลือกขนาดอินเวอร์เตอร์ที่ถูกต้อง
+            </p>
           </div>
-          <a href="#calculator" class="text-amber-400 text-xs font-bold mt-6 inline-block hover:underline">ลองคำนวณ &rarr;</a>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-slate-500">เผยแพร่: 2026</span>
+            <a href="#calculator" class="text-amber-400 font-bold hover:underline flex items-center gap-1">ลองคำนวณ &rarr;</a>
+          </div>
         </div>
+
+        <!-- บทความที่ 4 -->
+        <div class="bg-[#0f172a] border border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-amber-500/50 transition group">
+          <div>
+            <div class="flex items-center justify-between text-xs text-amber-400 mb-3">
+              <span>🛡️ การบำรุงรักษา</span>
+              <span class="text-slate-500">3 นาทีอ่าน</span>
+            </div>
+            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition mb-2">
+              4. วิธีดูแลรักษาและล้างแผงโซล่าเซลล์อย่างไรให้ผลิตไฟเต็มประสิทธิภาพตลอด 25 ปี
+            </h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              ข้อควรระวังในการทำความสะอาดแผง คราบฝุ่น มูลนกที่ส่งผลต่อกระแสไฟ และความถี่ในการตรวจเช็คระบบไฟฟ้าประจำปี
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-slate-500">เผยแพร่: 2026</span>
+            <a href="#contact" class="text-amber-400 font-bold hover:underline flex items-center gap-1">ติดต่อบริการ &rarr;</a>
+          </div>
+        </div>
+
+        <!-- บทความที่ 5 -->
+        <div class="bg-[#0f172a] border border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-amber-500/50 transition group">
+          <div>
+            <div class="flex items-center justify-between text-xs text-amber-400 mb-3">
+              <span>🔋 เทคโนโลยีอินเวอร์เตอร์</span>
+              <span class="text-slate-500">5 นาทีอ่าน</span>
+            </div>
+            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition mb-2">
+              5. On-Grid vs Hybrid ต่างกันอย่างไร? เลือกแบบไหนให้ตอบโจทย์ไลฟ์สไตล์คุณ
+            </h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              เปรียบเทียบระบบออนกริดประหยัดค่าไฟปกติ กับระบบไฮบริดพ่วงแบตเตอรี่สำรองยามไฟดับ พร้อมข้อดี-ข้อจำกัดที่ควรรู้
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-slate-500">เผยแพร่: 2026</span>
+            <a href="#contact" class="text-amber-400 font-bold hover:underline flex items-center gap-1">ปรึกษาเรา &rarr;</a>
+          </div>
+        </div>
+
+        <!-- บทความที่ 6 -->
+        <div class="bg-[#0f172a] border border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-amber-500/50 transition group">
+          <div>
+            <div class="flex items-center justify-between text-xs text-amber-400 mb-3">
+              <span>🏭 ภาคธุรกิจและโรงงาน</span>
+              <span class="text-slate-500">5 นาทีอ่าน</span>
+            </div>
+            <h3 class="text-lg font-bold text-white group-hover:text-amber-400 transition mb-2">
+              6. โซล่าเซลล์โรงงาน ลดต้นทุนการผลิตและเตรียมพร้อมรับมือกฎหมาย CBAM
+            </h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              ทำไมภาคอุตสาหกรรมถึงต้องเร่งเปลี่ยนมาใช้พลังงานสะอาด สิทธิประโยชน์ BOI และการลด Carbon Footprint เพื่อการส่งออก
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-slate-500">เผยแพร่: 2026</span>
+            <a href="#contact" class="text-amber-400 font-bold hover:underline flex items-center gap-1">ขอใบเสนอราคา &rarr;</a>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
   <!-- ==============================
-       Dedicated Contact Us Section (ตามภาพ 1000033088_3.jpg)
+       Dedicated Contact Us Section
        ============================== -->
-  <section id="contact" class="py-16 bg-[#060a12] border-t border-slate-800 px-4 sm:px-6 lg:px-8">
+  <section id="contact" class="py-20 bg-[#060a12] border-t border-slate-800 px-4 sm:px-6 lg:px-8">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-12">
         <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Get In Touch With Us</span>
