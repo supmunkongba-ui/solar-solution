@@ -3,619 +3,387 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Solar Demo - ผู้นำผลิตแผงและติดตั้งระบบโซลาร์เซลล์ครบวงจร</title>
-  <!-- Tailwind CSS & Google Fonts -->
+  <title>Solar PPM Demo - ผู้นำผลิตและติดตั้งระบบโซลาร์เซลล์ครบวงจร</title>
+  <!-- Tailwind CSS & Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: { kanit: ['Kanit', 'sans-serif'] },
           colors: {
-            brand: {
-              navy: '#0b192c',
-              blue: '#1e3e62',
-              orange: '#ff6500',
-              accent: '#f39c12'
-            }
+            brand: { navy: '#0a1b3f', blue: '#1e3e62', orange: '#ff6500', yellow: '#fae300' }
           }
         }
       }
     }
   </script>
-  <style>
-    body { font-family: 'Kanit', sans-serif; }
-    .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+  <style> 
+    body { font-family: 'Kanit', sans-serif; } 
+    /* ป้องกันการเลื่อนหน้าจอเวลาเปิดเมนูมือถือ */
+    .no-scroll { overflow: hidden; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-orange selection:text-white">
 
-  <!-- 1. Top Utility Header -->
-  <div class="bg-brand-navy text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
-    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-      <div class="flex items-center space-x-3 text-[11px] sm:text-xs">
-        <span class="inline-flex items-center text-brand-orange font-medium">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block mr-1.5 animate-pulse"></span>
-          ผู้ผลิตแผงโซลาร์เซลล์มาตรฐาน MiT / มอก. / IEC
-        </span>
-        <span class="hidden md:inline text-slate-600">|</span>
-        <span class="hidden md:inline">รับสิทธิประโยชน์ BOI สูงสุด 50%</span>
+  <!-- ==============================
+       1. Mobile Menu Overlay
+       ============================== -->
+  <div id="mobileMenu" class="fixed inset-0 z-[100] hidden flex-col bg-white overflow-y-auto">
+    <!-- Header เมนู (สีน้ำเงินเข้ม) -->
+    <div class="bg-brand-navy text-white flex justify-between items-center px-4 h-[68px]">
+      <div class="flex items-center space-x-2">
+        <svg class="w-8 h-8 text-brand-yellow" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+        <div>
+          <span class="text-xl font-bold leading-none block">SOLAR</span>
+          <span class="text-xl font-bold leading-none block">PPM</span>
+        </div>
       </div>
-      <div class="flex items-center space-x-4 text-[11px] sm:text-xs">
-        <a href="tel:0823473338" class="hover:text-white font-medium flex items-center gap-1">
-          <svg class="w-3.5 h-3.5 text-brand-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
-          TEL : 082-347-3338
-        </a>
-        <span>Line: @solarppm</span>
+      <button id="closeMenuBtn" class="text-white hover:text-gray-300 p-2">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+    <!-- รายการลิงก์ -->
+    <div class="flex flex-col text-[15px] font-medium text-slate-700">
+      <a href="#" class="px-5 py-4 border-b border-slate-100 text-brand-navy font-bold">หน้าแรก</a>
+      <a href="#about" class="px-5 py-4 border-b border-slate-100" onclick="closeMenu()">เกี่ยวกับเรา</a>
+      <a href="#services" class="px-5 py-4 border-b border-slate-100" onclick="closeMenu()">ติดตั้งโซล่าเซลล์</a>
+      <a href="#pv-panel" class="px-5 py-4 border-b border-slate-100" onclick="closeMenu()">แผงโซล่าเซลล์</a>
+      <a href="#calculator" class="px-5 py-4 border-b border-slate-100 text-brand-orange" onclick="closeMenu()">โปรแกรมคำนวณ</a>
+      <a href="#" class="px-5 py-4 border-b border-slate-100">ผลงาน</a>
+      <a href="#" class="px-5 py-4 border-b border-slate-100">คำถามที่พบบ่อย</a>
+      <a href="#" class="px-5 py-4 border-b border-slate-100">ติดต่อเรา</a>
+    </div>
+  </div>
+
+  <!-- ==============================
+       2. Floating Contact Button
+       ============================== -->
+  <div class="fixed bottom-6 right-6 z-50 flex items-center gap-2">
+    <div class="bg-brand-yellow text-brand-navy font-semibold text-sm px-4 py-2 rounded-xl shadow-lg cursor-pointer hover:scale-105 transition">
+      Contact us
+    </div>
+    <button class="w-14 h-14 bg-[#3956a3] rounded-full flex items-center justify-center shadow-lg relative cursor-pointer hover:bg-brand-navy transition">
+      <span class="absolute top-0 right-0 w-5 h-5 bg-red-600 border-2 border-white rounded-full text-[10px] text-white flex items-center justify-center font-bold">2</span>
+      <!-- ไอคอนแชท -->
+      <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 5.91 2 10.74c0 2.76 1.48 5.23 3.79 6.8-.2.98-.82 2.37-2.12 3.52-.16.14-.2.38-.1.57.1.18.3.28.51.26 2.87-.24 5.09-1.66 6.36-2.73.5.07 1.02.1 1.56.1 5.52 0 10-3.91 10-8.74S17.52 2 12 2zm-3.5 9.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm3.5 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm3.5 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"/></svg>
+    </button>
+  </div>
+
+  <!-- ==============================
+       3. Top Bar & Navbar
+       ============================== -->
+  <div class="bg-brand-navy text-slate-300 text-[11px] sm:text-xs py-2 px-4 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+      <div class="flex items-center space-x-3">
+        <span class="inline-flex items-center text-brand-yellow font-medium">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span>
+          ผู้ผลิตแผงโซล่าเซลล์มาตรฐาน MiT / มอก.
+        </span>
+        <span class="hidden md:inline">| รองรับสิทธิประโยชน์ BOI สูงสุด 50%</span>
+      </div>
+      <div>
+        <a href="tel:0823473338" class="hover:text-white font-medium">📞 082-347-3338</a>
+        <span class="ml-3">Line: @solarppm</span>
       </div>
     </div>
   </div>
 
-  <!-- 2. Main Navigation Bar (Clone Solar PPM Menu Structure) -->
-  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
-      <!-- Brand Logo -->
-      <a href="#" class="flex items-center space-x-3 group">
-        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-orange to-amber-500 flex items-center justify-center text-white shadow-md shadow-orange-500/20 group-hover:scale-105 transition-transform">
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
-        </div>
+  <header class="sticky top-0 z-40 bg-white shadow-sm border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
+      <!-- โลโก้ -->
+      <a href="#" class="flex items-center space-x-2">
+        <svg class="w-8 h-8 text-brand-navy" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
         <div>
-          <span class="text-2xl font-black tracking-tight text-brand-navy">SOLAR <span class="text-brand-orange">PPM</span></span>
-          <span class="text-[10px] text-slate-400 block tracking-widest uppercase font-semibold">Clean Energy EPC & OEM Tier 1</span>
+          <span class="text-xl font-bold tracking-tight text-brand-navy leading-none block">SOLAR</span>
+          <span class="text-xl font-bold tracking-tight text-brand-navy leading-none block">PPM</span>
         </div>
       </a>
-
-      <!-- Desktop Menus -->
-      <nav class="hidden xl:flex items-center space-x-7 text-sm font-medium text-slate-700">
+      
+      <!-- เมนู Desktop -->
+      <nav class="hidden lg:flex items-center space-x-7 text-sm font-medium text-slate-700">
+        <a href="#" class="text-brand-navy font-bold">หน้าแรก</a>
         <a href="#about" class="hover:text-brand-orange transition">เกี่ยวกับเรา</a>
-        <a href="#pv-panel" class="hover:text-brand-orange transition">แผงโซล่าเซลล์ (PV Panel)</a>
-        <a href="#services" class="hover:text-brand-orange transition">บริการติดตั้ง (EPC/PPA)</a>
-        <a href="#solutions" class="hover:text-brand-orange transition">โซลูชันโครงการ</a>
-        <a href="#om" class="hover:text-brand-orange transition">บริการ O&M</a>
-        <a href="#calculator" class="text-brand-orange font-semibold hover:underline">คำนวณจุดคุ้มทุน</a>
-        <a href="#contact" class="hover:text-brand-orange transition">ติดต่อเรา</a>
+        <a href="#pv-panel" class="hover:text-brand-orange transition">แผงโซล่าเซลล์</a>
+        <a href="#services" class="hover:text-brand-orange transition">บริการ EPC/PPA</a>
+        <a href="#calculator" class="text-brand-orange font-bold hover:underline">คำนวณจุดคุ้มทุน</a>
       </nav>
-
-      <!-- Action Button -->
-      <div class="flex items-center space-x-3">
-        <a href="#calculator" class="bg-brand-orange hover:bg-orange-600 text-white font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-lg shadow-md shadow-orange-500/20 transition hover:-translate-y-0.5">
-          ประเมินค่าไฟฟรี
-        </a>
-      </div>
+      
+      <!-- ปุ่มเปิดเมนู Mobile -->
+      <button id="openMenuBtn" class="lg:hidden text-brand-navy p-2 focus:outline-none">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+      </button>
     </div>
   </header>
 
-  <!-- 3. Hero Section (Industrial Authority) -->
-  <section class="relative bg-brand-navy text-white overflow-hidden py-24 lg:py-32">
-    <!-- Background Industrial Solar Image -->
-    <div class="absolute inset-0 z-0 opacity-25 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1509391365360-2e959784a276?q=80&w=2072&auto=format&fit=crop');"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-brand-navy via-brand-navy/95 to-brand-navy/60 z-0"></div>
-
+  <!-- ==============================
+       4. Hero Section
+       ============================== -->
+  <section class="relative bg-brand-navy text-white py-20 overflow-hidden">
+    <!-- ภาพพื้นหลัง -->
+    <div class="absolute inset-0 opacity-20 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1509391365360-2e959784a276?q=80&w=2072&auto=format&fit=crop');"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-brand-navy via-transparent to-transparent"></div>
+    
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="max-w-3xl">
-        <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-brand-orange text-xs font-semibold px-3 py-1.5 rounded-full mb-6 backdrop-blur-sm">
-          <span>🇹🇭 ผู้ผลิตแผงโซล่าเซลล์ไทย 100% พร้อมบริการ EPC แบบครบวงจร</span>
+        <div class="inline-flex items-center gap-2 bg-brand-yellow/20 border border-brand-yellow/50 text-brand-yellow text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
+          <span>🏆 ผู้ผลิตแผงโซล่าเซลล์ไทย 100% (Made in Thailand)</span>
         </div>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
-          บริษัทผลิตแผงและติดตั้งโซล่าเซลล์ <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-yellow-400">ลดต้นทุนค่าไฟโรงงาน</span>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight leading-tight">
+          บริษัทผลิตแผงและติดตั้งโซล่าเซลล์ <span class="text-brand-orange">ลดต้นทุนค่าไฟสูงสุด 60%</span>
         </h1>
-        <p class="mt-6 text-base sm:text-lg text-slate-300 font-light leading-relaxed">
-          ให้บริการติดตั้ง Solar Rooftop โรงงาน, Solar Farm และ Floating Solar ครอบคลุมทั้งรูปแบบลงทุนเอง (EPC) และติดตั้งฟรีแบบสัญญาซื้อขายไฟ (Private PPA) มาตรฐาน OEM แบรนด์ระดับโลก
+        <p class="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed">
+          ด้านการติดตั้งโซล่าเซลล์สำหรับโครงการอุตสาหกรรมมากกว่า 200 MW ทั่วประเทศ 
+          ช่วยเพิ่มความยั่งยืนให้องค์กรและเตรียมพร้อมรับมือกฎ CBAM 
         </p>
-
-        <!-- Metrics Snapshot -->
-        <div class="grid grid-cols-3 gap-4 pt-8 my-8 border-t border-slate-800 text-left">
-          <div>
-            <span class="text-2xl sm:text-3xl font-extrabold text-brand-orange">200+ MW</span>
-            <span class="block text-xs text-slate-400 mt-1">ขนาดติดตั้งสะสม</span>
-          </div>
-          <div>
-            <span class="text-2xl sm:text-3xl font-extrabold text-white">220+</span>
-            <span class="block text-xs text-slate-400 mt-1">โรงงานและธุรกิจชั้นนำ</span>
-          </div>
-          <div>
-            <span class="text-2xl sm:text-3xl font-extrabold text-emerald-400">25,000 ลบ.</span>
-            <span class="block text-xs text-slate-400 mt-1">มูลค่าประหยัดค่าไฟ</span>
-          </div>
-        </div>
-
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="#calculator" class="bg-brand-orange hover:bg-orange-600 text-white font-semibold text-center px-8 py-3.5 rounded-xl shadow-lg shadow-orange-500/30 transition">
-            เริ่มคำนวณขนาดติดตั้ง Solar
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a href="#calculator" class="bg-brand-orange hover:bg-orange-600 text-white font-bold text-center px-8 py-3.5 rounded-lg shadow-lg transition">
+            ประเมินค่าไฟเบื้องต้นฟรี
           </a>
-          <a href="#services" class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-medium text-center px-8 py-3.5 rounded-xl border border-white/20 transition">
-            ดูแพ็กเกจ EPC และ PPA
+          <a href="#services" class="bg-white/10 hover:bg-white/20 text-white font-medium text-center px-8 py-3.5 rounded-lg border border-white/20 transition">
+            ดูรูปแบบการลงทุน (EPC / PPA)
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. Highlights & Differentiators (จุดเด่นที่ทำให้เราแตกต่าง) -->
-  <section id="about" class="py-16 bg-white border-b border-slate-100">
+  <!-- ==============================
+       5. Interactive Solar Calculator (Light Theme)
+       ============================== -->
+  <section id="calculator" class="py-16 bg-white border-b border-slate-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="text-xs font-bold uppercase tracking-widest text-brand-orange">Why Choose Solar PPM</span>
-        <h2 class="text-3xl font-bold text-slate-900 mt-1">ทำไมโรงงานชั้นนำเลือกติดตั้งกับ Solar PPM</h2>
-        <p class="text-slate-500 text-sm mt-2">ครบวงจรในที่เดียว: มีโรงงานผลิตเอง วิศวกรออกแบบติดตั้ง และศูนย์ดูแล O&M ตลอด 25 ปี</p>
+      <div class="max-w-3xl mx-auto text-center mb-10">
+        <span class="text-brand-orange text-xs font-bold uppercase tracking-widest">Smart Solar ROI Calculator</span>
+        <h2 class="text-3xl font-bold mt-1 text-brand-navy">โปรแกรมคำนวณแผงโซล่าเซลล์และจุดคุ้มทุน</h2>
+        <p class="text-slate-500 text-sm mt-2">คำนวณอ้างอิงตามค่าความเข้มแสง (PSH) แต่ละภูมิภาค และอัตราค่าไฟจริง</p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 hover:border-brand-orange hover:shadow-lg transition">
-          <div class="w-12 h-12 rounded-xl bg-orange-100 text-brand-orange flex items-center justify-center mb-4">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-          </div>
-          <h4 class="text-base font-bold text-slate-900 mb-2">ผู้ผลิต OEM แบรนด์ระดับโลก</h4>
-          <p class="text-xs text-slate-600 leading-relaxed">ได้รับความไว้วางใจผลิต OEM ให้แบรนด์ Tier 1 สากล ควบคุมมาตรฐานด้วยเทคโนโลยี G12 ประสิทธิภาพสูง</p>
-        </div>
-
-        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 hover:border-brand-orange hover:shadow-lg transition">
-          <div class="w-12 h-12 rounded-xl bg-blue-100 text-brand-blue flex items-center justify-center mb-4">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
-          </div>
-          <h4 class="text-base font-bold text-slate-900 mb-2">มาตรฐาน ISO / IEC / มอก.</h4>
-          <p class="text-xs text-slate-600 leading-relaxed">ได้รับใบรับรอง Made in Thailand (MiT), มอก. (TIS), UL และ IEC ทนต่อสภาพภูมิอากาศร้อนชื้นของไทย</p>
-        </div>
-
-        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 hover:border-brand-orange hover:shadow-lg transition">
-          <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
-          <h4 class="text-base font-bold text-slate-900 mb-2">ลดหย่อนภาษี BOI สูงสุด 50%</h4>
-          <p class="text-xs text-slate-600 leading-relaxed">ทีมผู้เชี่ยวชาญช่วยดำเนินเรื่องขอสิทธิประโยชน์ทางภาษีจากสำนักงานคณะกรรมการส่งเสริมการลงทุน (BOI)</p>
-        </div>
-
-        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 hover:border-brand-orange hover:shadow-lg transition">
-          <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center mb-4">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          </div>
-          <h4 class="text-base font-bold text-slate-900 mb-2">ประสบการณ์จริงกว่า 10 ปี</h4>
-          <p class="text-xs text-slate-600 leading-relaxed">ติดตั้งระบบตั้งแต่ปี พ.ศ. 2557 ดูแลครบวงจรทั้งขออนุญาต กฟน./กฟภ./กกพ. และระบบเชื่อมต่อขนานไฟ</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. Interactive Solar Calculator (Comprehensive ROI Engine) -->
-  <section id="calculator" class="py-20 bg-slate-900 text-white relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="max-w-3xl mx-auto text-center mb-12">
-        <span class="text-brand-orange text-xs font-bold uppercase tracking-widest">Solar Rooftop Feasibility Calculator</span>
-        <h2 class="text-3xl sm:text-4xl font-bold mt-1">เครื่องคำนวณการติดตั้งโซล่าเซลล์สำหรับธุรกิจและโรงงาน</h2>
-        <p class="text-slate-400 text-sm mt-3">ประเมินขนาดกิโลวัตต์ (kWp), กำลังผลิตต่อปี, ผลประหยัดสะสม 25 ปี และสิทธิประโยชน์ BOI</p>
-      </div>
-
-      <div class="max-w-5xl mx-auto bg-slate-800/90 border border-slate-700 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-xl">
+      <div class="max-w-6xl mx-auto bg-white border border-slate-200 rounded-3xl p-5 sm:p-8 shadow-xl">
         <div class="grid lg:grid-cols-12 gap-8">
           
-          <!-- Control Panel (Left 5 Cols) -->
-          <div class="lg:col-span-5 space-y-6">
-            <!-- 1. Customer / Facility Type -->
-            <div>
-              <label class="text-xs font-semibold text-slate-300 block mb-2 uppercase tracking-wider">1. ประเภทอาคาร / อัตราค่าไฟฟ้า</label>
-              <div class="grid grid-cols-2 gap-2">
-                <button type="button" onclick="setTariff('industrial', this)" class="tariff-btn active bg-brand-orange text-white text-xs py-2.5 px-3 rounded-lg font-medium border border-transparent text-center transition">โรงงาน / กิจการขนาดใหญ่ (TOU)</button>
-                <button type="button" onclick="setTariff('commercial', this)" class="tariff-btn bg-slate-700 text-slate-300 text-xs py-2.5 px-3 rounded-lg font-medium border border-slate-600 text-center transition">อาคารพาณิชย์ / ออฟฟิศ</button>
-              </div>
-            </div>
-
-            <!-- 2. Monthly Electricity Bill Range -->
+          <!-- ฝั่งกรอกข้อมูล (Inputs) -->
+          <div class="lg:col-span-5 space-y-6 bg-slate-50 p-6 rounded-2xl border border-slate-200">
             <div>
               <div class="flex justify-between items-center mb-2">
-                <label class="text-xs font-semibold text-slate-300 uppercase tracking-wider">2. บิลค่าไฟฟ้าเฉลี่ยต่อเดือน</label>
-                <span id="dispBill" class="text-xl font-bold text-brand-orange">฿120,000</span>
+                <label class="text-xs font-semibold text-slate-700">บิลค่าไฟฟ้าเฉลี่ยต่อเดือน (บาท)</label>
+                <span id="dispBill" class="text-xl font-bold text-brand-orange">฿20,000</span>
               </div>
-              <input id="inputBill" type="range" min="30000" max="1500000" step="10000" value="120000" class="w-full h-2.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-brand-orange" oninput="runCalculator()">
-              <div class="flex justify-between text-[10px] text-slate-500 mt-1">
-                <span>฿30,000</span>
-                <span>฿750,000</span>
-                <span>฿1,500,000+</span>
+              <input id="inputBill" type="range" min="3000" max="500000" step="1000" value="20000" class="w-full h-2 bg-slate-300 rounded-lg appearance-none cursor-pointer accent-brand-orange" oninput="runCalculator()">
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="text-xs font-semibold text-slate-600 block mb-2">อัตราค่าไฟ (บ./หน่วย)</label>
+                <input id="inputRate" type="number" step="0.1" value="4.7" class="w-full bg-white border border-slate-300 text-slate-800 text-sm rounded-lg p-2.5 focus:border-brand-orange focus:outline-none" onchange="runCalculator()">
+              </div>
+              <div>
+                <label class="text-xs font-semibold text-slate-600 block mb-2">สัดส่วนใช้ไฟกลางวัน (%)</label>
+                <select id="dayRatio" class="w-full bg-white border border-slate-300 text-slate-800 text-sm rounded-lg p-2.5 focus:border-brand-orange focus:outline-none" onchange="runCalculator()">
+                  <option value="40">บ้านพัก (40%)</option>
+                  <option value="60">ออฟฟิศ (60%)</option>
+                  <option value="80" selected>โรงงาน (80%)</option>
+                </select>
               </div>
             </div>
 
-            <!-- 3. Operation Time -->
             <div>
-              <label class="text-xs font-semibold text-slate-300 block mb-2 uppercase tracking-wider">3. สัดส่วนการใช้ไฟช่วงกลางวัน (08:00 - 18:00)</label>
-              <select id="dayRatio" class="w-full bg-slate-900 border border-slate-700 text-slate-200 text-xs rounded-lg p-3 focus:outline-none focus:border-brand-orange" onchange="runCalculator()">
-                <option value="0.75" selected>ใช้ไฟกลางวันเป็นหลัก (โรงงานกะกลางวัน / 75%)</option>
-                <option value="0.60">ใช้ไฟปานกลาง (ออฟฟิศทั่วไป / 60%)</option>
-                <option value="0.90">ใช้ไฟกลางวันเต็มระบบ (คลังสินค้าห้องเย็น / 90%)</option>
+              <label class="text-xs font-semibold text-slate-600 block mb-2">พื้นที่ติดตั้ง (ชั่วโมงแดดเฉลี่ย PSH)</label>
+              <select id="pshValue" class="w-full bg-white border border-slate-300 text-slate-800 text-sm rounded-lg p-2.5 focus:border-brand-orange focus:outline-none" onchange="runCalculator()">
+                <option value="4.8">กทม. / ภาคกลาง (4.8 ชม.)</option>
+                <option value="5.1">ภาคอีสาน (5.1 ชม.)</option>
+                <option value="4.6">ภาคใต้ (4.6 ชม.)</option>
               </select>
             </div>
 
-            <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-700 text-xs text-slate-400 space-y-1">
-              <p class="text-slate-300 font-semibold">ℹ️ เกณฑ์คำนวณมาตรฐาน:</p>
-              <p>• ค่าไฟฟ้าอ้างอิงเฉลี่ย 4.20 บาท/หน่วย (kWh)</p>
-              <p>• อัตราผลิตแดดเฉลี่ยประเทศไทย 4.0 - 4.2 ชม./วัน</p>
+            <div>
+              <label class="text-xs font-semibold text-slate-600 block mb-2">ขนาดแผงโซล่าเซลล์</label>
+              <select id="panelWatt" class="w-full bg-white border border-slate-300 text-slate-800 text-sm rounded-lg p-2.5 focus:border-brand-orange focus:outline-none" onchange="runCalculator()">
+                <option value="600">แผง 600W (Tier 1)</option>
+                <option value="700">แผง 700W (HJT)</option>
+              </select>
             </div>
+            <p class="text-[10px] text-slate-400 mt-2">* ระบบเผื่อค่า System Loss ไว้ที่ 20% ตามหลักวิศวกรรม</p>
           </div>
 
-          <!-- Output Display Panel (Right 7 Cols) -->
-          <div class="lg:col-span-7 bg-slate-900/80 rounded-2xl p-6 border border-slate-700 flex flex-col justify-between">
-            <div>
-              <div class="flex justify-between items-center pb-4 border-b border-slate-800">
-                <span class="text-xs font-semibold text-slate-400 uppercase">ผลลัพธ์ประเมินความคุ้มค่าเบื้องต้น</span>
-                <span class="text-[11px] bg-emerald-500/20 text-emerald-300 px-2.5 py-0.5 rounded-full border border-emerald-500/30 font-medium">ROI Optimal</span>
+          <!-- ฝั่งแสดงผลลัพธ์ (Outputs) -->
+          <div class="lg:col-span-7 flex flex-col justify-between">
+            <h3 class="text-brand-navy text-sm font-bold border-b border-slate-200 pb-2 mb-4">ผลการประเมินสเปกระบบ</h3>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div class="bg-blue-50/70 p-4 rounded-xl border border-blue-100 text-center">
+                <span class="text-[11px] text-slate-500 block mb-1">จำนวนแผงแนะนำ</span>
+                <span id="resPanels" class="text-3xl font-bold text-brand-orange">16</span> <span class="text-xs text-slate-500">แผง</span>
               </div>
-
-              <!-- Main Results Grid -->
-              <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 my-5">
-                <div class="bg-slate-800/80 p-3 rounded-xl border border-slate-700/60">
-                  <span class="text-[10px] text-slate-400 block">ขนาดติดตั้งแนะนำ</span>
-                  <div class="mt-1"><span id="resCapacity" class="text-xl font-bold text-brand-orange">60</span> <span class="text-xs text-slate-400">kWp</span></div>
-                </div>
-
-                <div class="bg-slate-800/80 p-3 rounded-xl border border-slate-700/60">
-                  <span class="text-[10px] text-slate-400 block">พื้นที่หลังคาที่ใช้</span>
-                  <div class="mt-1"><span id="resArea" class="text-xl font-bold text-white">300</span> <span class="text-xs text-slate-400">ตร.ม.</span></div>
-                </div>
-
-                <div class="bg-slate-800/80 p-3 rounded-xl border border-slate-700/60">
-                  <span class="text-[10px] text-slate-400 block">ผลิตไฟฟ้าต่อปี</span>
-                  <div class="mt-1"><span id="resEnergyYear" class="text-xl font-bold text-white">87,600</span> <span class="text-xs text-slate-400">หน่วย</span></div>
-                </div>
-
-                <div class="bg-slate-800/80 p-3 rounded-xl border border-slate-700/60">
-                  <span class="text-[10px] text-slate-400 block">ประหยัดเฉลี่ย (ต่อปี)</span>
-                  <div class="mt-1"><span id="resSavingYear" class="text-xl font-bold text-emerald-400">฿367,920</span></div>
-                </div>
-
-                <div class="bg-slate-800/80 p-3 rounded-xl border border-slate-700/60">
-                  <span class="text-[10px] text-slate-400 block">ผลประหยัดสุทธิ (25 ปี)</span>
-                  <div class="mt-1"><span id="resSaving25" class="text-xl font-bold text-emerald-400">฿9.19 ลบ.</span></div>
-                </div>
-
-                <div class="bg-slate-800/80 p-3 rounded-xl border border-slate-700/60">
-                  <span class="text-[10px] text-slate-400 block">ระยะเวลาคืนทุน</span>
-                  <div class="mt-1"><span id="resPayback" class="text-xl font-bold text-white">3.4</span> <span class="text-xs text-slate-400">ปี</span></div>
-                </div>
+              <div class="bg-blue-50/70 p-4 rounded-xl border border-blue-100 text-center">
+                <span class="text-[11px] text-slate-500 block mb-1">ขนาดติดตั้งรวม</span>
+                <span id="resCapacity" class="text-3xl font-bold text-brand-navy">9.6</span> <span class="text-xs text-slate-500">kWp</span>
               </div>
-
-              <!-- BOI Tax Benefit Highlight -->
-              <div class="bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-brand-orange/30 rounded-xl p-3.5 mb-5 flex items-center justify-between">
-                <div>
-                  <span class="text-xs font-bold text-brand-orange block">สิทธิประโยชน์ลดหย่อนภาษี BOI (50%)</span>
-                  <span class="text-[11px] text-slate-400">ประหยัดภาษีนิติบุคคลสูงสุดโดยประมาณ:</span>
-                </div>
-                <div class="text-right">
-                  <span id="resBoiSaving" class="text-base font-bold text-amber-300">฿630,000</span>
-                </div>
+              <div class="bg-blue-50/70 p-4 rounded-xl border border-blue-100 text-center">
+                <span class="text-[11px] text-slate-500 block mb-1">พื้นที่หลังคาที่ใช้</span>
+                <span id="resArea" class="text-3xl font-bold text-brand-navy">40</span> <span class="text-xs text-slate-500">ตร.ม.</span>
               </div>
             </div>
 
-            <!-- Direct Contact Form within Calculator -->
-            <form onsubmit="event.preventDefault(); alert('ขอบคุณครับ ข้อมูลคำนวณและข้อเสนอโครงการจะถูกจัดส่งให้ฝ่ายวิศวกรรมติดต่อกลับทันที');" class="pt-4 border-t border-slate-800 space-y-3">
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                <input type="text" placeholder="ชื่อผู้ติดต่อ / บริษัท" required class="bg-slate-900 border border-slate-700 text-white text-xs rounded-lg px-3 py-2.5 focus:outline-none focus:border-brand-orange" />
-                <input type="tel" placeholder="เบอร์โทรศัพท์ (สำหรับส่งรายงาน)" required class="bg-slate-900 border border-slate-700 text-white text-xs rounded-lg px-3 py-2.5 focus:outline-none focus:border-brand-orange" />
+            <h3 class="text-emerald-600 text-sm font-bold border-b border-slate-200 pb-2 mt-6 mb-4">ผลตอบแทนการลงทุน (ROI)</h3>
+            
+            <div class="grid grid-cols-2 gap-3 mb-4">
+              <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                <span class="text-[11px] text-slate-500 block">ผลิตไฟได้เฉลี่ย/เดือน</span>
+                <div class="mt-1"><span id="resMonthlyKwh" class="text-xl font-bold text-brand-navy">1,105</span> <span class="text-xs text-slate-500">kWh</span></div>
               </div>
-              <button type="submit" class="w-full bg-brand-orange hover:bg-orange-600 text-white font-bold text-xs py-3 rounded-lg shadow-md transition tracking-wide uppercase">
-                ส่งรายงานวิเคราะห์ความคุ้มค่าโครงการฉบับเต็ม (PDF)
-              </button>
+              <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                <span class="text-[11px] text-slate-500 block">ประหยัดค่าไฟ/เดือน</span>
+                <div class="mt-1"><span id="resMonthlySave" class="text-xl font-bold text-emerald-600">฿5,198</span></div>
+              </div>
+              <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                <span class="text-[11px] text-slate-500 block">ประหยัดค่าไฟ/ปี</span>
+                <div class="mt-1"><span id="resYearlySave" class="text-xl font-bold text-emerald-600">฿62,376</span></div>
+              </div>
+              <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                <span class="text-[11px] text-slate-500 block">คืนทุนโดยประมาณ</span>
+                <div class="mt-1"><span id="resPayback" class="text-xl font-bold text-brand-orange">4.5</span> <span class="text-xs text-slate-500">ปี</span></div>
+              </div>
+            </div>
+
+            <form onsubmit="event.preventDefault(); alert('ขอบคุณครับ ฝ่ายวิศวกรรมจะติดต่อกลับพร้อมรายงานประเมินราคาครับ');" class="bg-slate-50 p-4 rounded-xl border border-slate-200 mt-2">
+              <p class="text-xs text-brand-navy mb-3 font-semibold">รับรายงานเสนอราคาฟรี พร้อมนัดสำรวจหน้างาน</p>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <input type="text" placeholder="ชื่อ / บริษัท" required class="bg-white border border-slate-300 text-slate-800 text-xs rounded-lg px-3 py-2.5 focus:border-brand-orange outline-none" />
+                <input type="tel" placeholder="เบอร์โทรศัพท์" required class="bg-white border border-slate-300 text-slate-800 text-xs rounded-lg px-3 py-2.5 focus:border-brand-orange outline-none" />
+                <button type="submit" class="bg-brand-orange hover:bg-orange-600 text-white font-bold text-xs py-2.5 rounded-lg transition">
+                  รับใบเสนอราคา
+                </button>
+              </div>
             </form>
           </div>
-
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 6. Products Catalog (แผงโซล่าเซลล์ ผลิตในไทย คุณภาพสูง) -->
-  <section id="pv-panel" class="py-20 bg-white">
+  <!-- ==============================
+       6. Services & Products (Brief)
+       ============================== -->
+  <section id="services" class="py-16 bg-slate-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-        <div>
-          <span class="text-xs font-bold uppercase tracking-widest text-brand-orange">PV Panel Production</span>
-          <h2 class="text-3xl font-bold text-slate-900 mt-1">แผงโซล่าเซลล์มาตรฐานโรงงาน Solar PPM</h2>
-          <p class="text-slate-500 text-sm mt-1">ผลิตในประเทศไทย (MiT) ผ่านการทดสอบ IEC / มอก. ทนทานต่อไอเกลือ ความร้อน และลมแรง</p>
-        </div>
-        <div class="mt-4 md:mt-0 flex gap-2">
-          <span class="inline-flex items-center text-xs bg-slate-100 text-slate-700 px-3 py-1.5 rounded-full font-medium">รับประกันสินค้า 12-15 ปี</span>
-          <span class="inline-flex items-center text-xs bg-emerald-100 text-emerald-800 px-3 py-1.5 rounded-full font-medium">รับประกันประสิทธิภาพ 25-30 ปี</span>
-        </div>
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-brand-navy">บริการติดตั้งโซล่าเซลล์ (EPC & PPA)</h2>
+        <p class="text-slate-500 text-sm mt-2">เลือกรูปแบบการลงทุนที่เหมาะสมกับองค์กรของคุณ</p>
       </div>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        <!-- Product 1 -->
-        <div class="rounded-2xl border border-slate-200 overflow-hidden group hover:shadow-xl transition">
-          <div class="h-56 bg-slate-100 overflow-hidden relative">
-            <img src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=800&auto=format&fit=crop" alt="Solar Panel" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <span class="absolute top-3 left-3 bg-brand-navy text-white text-[10px] font-bold px-2.5 py-1 rounded">Made in Thailand (MiT)</span>
-          </div>
-          <div class="p-6">
-            <h4 class="text-lg font-bold text-slate-900">SPPM 600W - Monofacial (MIT)</h4>
-            <p class="text-xs text-slate-500 mt-1">แผงโซล่าเซลล์ชนิดหน้าเดียวกำลังไฟสูง ได้รับการรับรองสัญชาติไทย ตอบโจทย์ข้อกำหนดจัดซื้อจัดจ้างภาครัฐ</p>
-            <div class="mt-4 pt-4 border-t border-slate-100 flex justify-between items-center text-xs">
-              <span class="text-slate-500">เทคโนโลยี: Half-cut PERC</span>
-              <span class="font-bold text-brand-orange">Efficiency 21.3%</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Product 2 -->
-        <div class="rounded-2xl border border-slate-200 overflow-hidden group hover:shadow-xl transition">
-          <div class="h-56 bg-slate-100 overflow-hidden relative">
-            <img src="https://images.unsplash.com/photo-1545208942-e1c0c9175224?q=80&w=800&auto=format&fit=crop" alt="Bifacial Doubleglass" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <span class="absolute top-3 left-3 bg-brand-orange text-white text-[10px] font-bold px-2.5 py-1 rounded">มอก. / Bifacial Doubleglass</span>
-          </div>
-          <div class="p-6">
-            <h4 class="text-lg font-bold text-slate-900">SPPM 660W - Bifacial Dual-Glass</h4>
-            <p class="text-xs text-slate-500 mt-1">แผงสองหน้ากระจกคู่ รับแสงสะท้อน Albedo ด้านหลังเพิ่มผลผลิตไฟฟ้าได้อีก 10-25% เหมาะสำหรับโซล่าร์ฟาร์มและลอยน้ำ</p>
-            <div class="mt-4 pt-4 border-t border-slate-100 flex justify-between items-center text-xs">
-              <span class="text-slate-500">เทคโนโลยี: G12 Large Wafer</span>
-              <span class="font-bold text-brand-orange">Bifaciality > 70%</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Product 3 -->
-        <div class="rounded-2xl border border-slate-200 overflow-hidden group hover:shadow-xl transition">
-          <div class="h-56 bg-slate-100 overflow-hidden relative">
-            <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=800&auto=format&fit=crop" alt="High Tech HJT" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-            <span class="absolute top-3 left-3 bg-brand-blue text-white text-[10px] font-bold px-2.5 py-1 rounded">IEC Standard</span>
-          </div>
-          <div class="p-6">
-            <h4 class="text-lg font-bold text-slate-900">SPPM 700W - Heterojunction (HJT)</h4>
-            <p class="text-xs text-slate-500 mt-1">เทคโนโลยี N-type HJT ประสิทธิภาพสูงสุด ค่าสัมประสิทธิ์อุณหภูมิดีเยี่ยม ผลิตไฟได้ต่อเนื่องแม้ในวันที่อากาศร้อนจัด</p>
-            <div class="mt-4 pt-4 border-t border-slate-100 flex justify-between items-center text-xs">
-              <span class="text-slate-500">เทคโนโลยี: Heterojunction</span>
-              <span class="font-bold text-brand-orange">Efficiency 22.5%</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 7. Installation Solutions: EPC vs Private PPA -->
-  <section id="services" class="py-20 bg-slate-50 border-t border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="text-xs font-bold uppercase tracking-widest text-brand-orange">Turnkey EPC & PPA Solutions</span>
-        <h2 class="text-3xl font-bold text-slate-900 mt-1">บริการติดตั้งโซล่าเซลล์ครบวงจร 2 รูปแบบการลงทุน</h2>
-        <p class="text-slate-500 text-sm mt-2">ตอบสนองเป้าหมายทางการเงินและนโยบาย ESG / Net Zero ของแต่ละองค์กร</p>
-      </div>
-
       <div class="grid md:grid-cols-2 gap-8">
-        <!-- Model 1: EPC -->
-        <div class="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 hover:border-brand-orange hover:shadow-xl transition relative flex flex-col justify-between">
-          <div>
-            <span class="inline-block bg-orange-100 text-brand-orange text-xs font-bold px-3 py-1.5 rounded-lg mb-4">รูปแบบที่ 1 : EPC (Engineering, Procurement & Construction)</span>
-            <h3 class="text-2xl font-bold text-slate-900 mb-3">ลูกค้าลงทุนเอง (Direct Investment)</h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
-              ผู้ประกอบการเป็นเจ้าของสินทรัพย์และระบบโซลาร์ 100% ประหยัดค่าไฟได้เต็มเม็ดเต็มหน่วย คืนทุนเฉลี่ยเร็วที่สุด พร้อมรับผลประโยชน์ทางภาษี
-            </p>
-            <ul class="space-y-3 text-xs sm:text-sm text-slate-700 mb-8">
-              <li class="flex items-center"><span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xs mr-3">✓</span> คืนทุนรวดเร็วเฉลี่ย 3 - 5 ปี จากค่าไฟที่ลดลง 100%</li>
-              <li class="flex items-center"><span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xs mr-3">✓</span> ยื่นขอสิทธิประโยชน์ยกเว้นภาษีนิติบุคคล BOI สูงสุด 50%</li>
-              <li class="flex items-center"><span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xs mr-3">✓</span> สัญญาดูแลและบำรุงรักษาระบบ (O&M) ฟรี 2 ปีเต็ม</li>
-              <li class="flex items-center"><span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xs mr-3">✓</span> ช่วยเหลือเรื่องคาร์บอนเครดิต และลดค่าปรับภาษีคาร์บอน (CBAM)</li>
-            </ul>
-          </div>
-          <a href="#calculator" class="block w-full py-3 bg-brand-navy hover:bg-slate-800 text-white text-center text-xs font-semibold rounded-xl transition">ประเมินแผนลงทุน EPC</a>
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:border-brand-orange transition">
+          <span class="bg-orange-100 text-brand-orange text-xs font-bold px-3 py-1 rounded mb-4 inline-block">ลงทุนเอง (EPC)</span>
+          <h3 class="text-xl font-bold text-brand-navy mb-3">ลดค่าไฟ 100% คืนทุน 3-5 ปี</h3>
+          <p class="text-sm text-slate-600 mb-4">ผู้ประกอบการเป็นเจ้าของระบบเต็มรูปแบบ สามารถนำไปลดหย่อนภาษี BOI สูงสุด 50% พร้อมบริการดูแลรักษาระบบฟรี 2 ปีแรก</p>
         </div>
-
-        <!-- Model 2: Private PPA -->
-        <div class="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 hover:border-brand-blue hover:shadow-xl transition relative flex flex-col justify-between">
-          <div>
-            <span class="inline-block bg-blue-100 text-brand-blue text-xs font-bold px-3 py-1.5 rounded-lg mb-4">รูปแบบที่ 2 : Private PPA (Zero CAPEX)</span>
-            <h3 class="text-2xl font-bold text-slate-900 mb-3">ติดตั้งฟรี ไม่มีค่าใช้จ่ายแรกเข้า</h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
-              Solar PPM เป็นผู้ลงทุนติดตั้งและซ่อมบำรุงอุปกรณ์ให้ทั้งหมด ลูกค้าเพียงจ่ายค่าไฟจากโซลาร์ในอัตราส่วนลดพิเศษตามที่ผลิตจริง
-            </p>
-            <ul class="space-y-3 text-xs sm:text-sm text-slate-700 mb-8">
-              <li class="flex items-center"><span class="w-5 h-5 rounded-full bg-blue-100 text-brand-blue flex items-center justify-center font-bold text-xs mr-3">✓</span> 0 บาท เงินลงทุนเริ่มต้น ไม่กระทบเงินทุนหมุนเวียนธุรกิจ</li>
-              <li class="flex items-center"><span class="w-5 h-5 rounded-full bg-blue-100 text-brand-blue flex items-center justify-center font-bold text-xs mr-3">✓</span> รับส่วนลดค่าไฟทันที 15% - 30% ของอัตราค่าไฟปกติ</li>
-              <li class="flex items-center"><span class="w-5 h-5 rounded-full bg-blue-100 text-brand-blue flex items-center justify-center font-bold text-xs mr-3">✓</span> ดูแลรักษาและรับประกันผลผลิตฟรีตลอดอายุสัญญา 15 - 20 ปี</li>
-              <li class="flex items-center"><span class="w-5 h-5 rounded-full bg-blue-100 text-brand-blue flex items-center justify-center font-bold text-xs mr-3">✓</span> เมื่อครบสัญญา ระบบโซล่าเซลล์จะโอนกรรมสิทธิ์เป็นของลูกค้าฟรี</li>
-            </ul>
-          </div>
-          <a href="#contact" class="block w-full py-3 bg-brand-blue hover:bg-slate-700 text-white text-center text-xs font-semibold rounded-xl transition">ปรึกษาเงื่อนไข Solar PPA</a>
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:border-brand-navy transition">
+          <span class="bg-blue-100 text-brand-navy text-xs font-bold px-3 py-1 rounded mb-4 inline-block">ติดตั้งฟรี (Private PPA)</span>
+          <h3 class="text-xl font-bold text-brand-navy mb-3">Zero CAPEX ไม่มีค่าใช้จ่ายแรกเข้า</h3>
+          <p class="text-sm text-slate-600 mb-4">ทางเราลงทุนอุปกรณ์และติดตั้งให้ทั้งหมด ลูกค้าเพียงจ่ายค่าไฟตามที่ระบบผลิตได้ ในราคาลดพิเศษ 15-30% ตลอดสัญญา</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 8. Project Types (Solar Rooftop / Solar Farm / Floating Solar) -->
-  <section id="solutions" class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="text-xs font-bold uppercase tracking-widest text-brand-orange">Turnkey Applications</span>
-        <h2 class="text-3xl font-bold text-slate-900 mt-1">ขอบเขตงานติดตั้งโครงการทุกรูปแบบ</h2>
+  <!-- ==============================
+       7. Footer
+       ============================== -->
+  <footer class="bg-brand-navy text-slate-400 py-12 text-sm border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-center md:text-left">
+      <div>
+        <p class="text-white font-bold text-xl mb-2">SOLAR <span class="text-brand-orange">PPM</span></p>
+        <p class="text-xs">ผู้นำด้านระบบไฟฟ้าพลังงานแสงอาทิตย์ครบวงจร มาตรฐานอุตสาหกรรมสากล</p>
       </div>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="group rounded-2xl overflow-hidden border border-slate-200">
-          <div class="h-60 overflow-hidden relative">
-            <img src="https://images.unsplash.com/photo-1509391365360-2e959784a276?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="Solar Rooftop">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-            <span class="absolute bottom-4 left-4 text-white font-bold text-lg">Solar Rooftop โรงงาน</span>
-          </div>
-          <div class="p-5">
-            <p class="text-xs text-slate-600 leading-relaxed">ติดตั้งบนหลังคา Metal Sheet, Concrete Slab หรือ CPAC โดยวิศวกรโครงสร้างตรวจรับรองความปลอดภัย ไม่รั่วซึม</p>
-          </div>
-        </div>
-
-        <div class="group rounded-2xl overflow-hidden border border-slate-200">
-          <div class="h-60 overflow-hidden relative">
-            <img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="Solar Farm">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-            <span class="absolute bottom-4 left-4 text-white font-bold text-lg">Solar Farm ภาคพื้นดิน</span>
-          </div>
-          <div class="p-5">
-            <p class="text-xs text-slate-600 leading-relaxed">สำหรับโรงไฟฟ้าพลังงานแสงอาทิตย์ โครงสร้างเสาเข็มมั่นคงแข็งแรง พร้อมระบบแปลงไฟขนาดใหญ่เชื่อมต่อสายส่ง</p>
-          </div>
-        </div>
-
-        <div class="group rounded-2xl overflow-hidden border border-slate-200">
-          <div class="h-60 overflow-hidden relative">
-            <img src="https://images.unsplash.com/photo-1548337138-e87d889cc369?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="Floating Solar">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-            <span class="absolute bottom-4 left-4 text-white font-bold text-lg">Floating Solar ทุ่นลอยน้ำ</span>
-          </div>
-          <div class="p-5">
-            <p class="text-xs text-slate-600 leading-relaxed">ติดตั้งบนอ่างเก็บน้ำของนิคมอุตสาหกรรม ได้ประโยชน์ 2 ต่อ: ผลิตไฟฟ้าได้ดีขึ้นจากความเย็นผิวน้ำ และลดการระเหยของน้ำ</p>
-          </div>
-        </div>
+      <div>
+        <h5 class="text-white font-semibold mb-3">ติดต่อเรา</h5>
+        <p class="text-xs space-y-1">
+          สำนักงานใหญ่: กรุงเทพมหานคร<br>
+          โรงงานผลิต: จ.ชลบุรี<br>
+          โทรศัพท์: 082-347-3338
+        </p>
+      </div>
+      <div>
+        <h5 class="text-white font-semibold mb-3">รับรองมาตรฐาน</h5>
+        <p class="text-xs">ISO 9001 | ISO 14001 | MiT | มอก.</p>
       </div>
     </div>
-  </section>
-
-  <!-- 9. Smart O&M (Operation & Maintenance) -->
-  <section id="om" class="py-20 bg-slate-900 text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center mb-14">
-        <span class="text-xs font-bold uppercase tracking-widest text-brand-orange">Professional O&M Services</span>
-        <h2 class="text-3xl font-bold mt-1">บริการบำรุงรักษาระบบโซล่าเซลล์ เพื่ออายุการใช้งาน 25 ปี</h2>
-        <p class="text-slate-400 text-sm mt-2">เทคโนโลยีตรวจจับความผิดปกติเชิงรุก ป้องกันไฟตก และคงประสิทธิภาพการผลิตไฟฟ้าสูงสุด</p>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
-          <div class="text-brand-orange text-3xl font-black mb-3">01</div>
-          <h4 class="font-bold text-base mb-2">Robot Cleaning System</h4>
-          <p class="text-xs text-slate-400 leading-relaxed">ใช้หุ่นยนต์ทำความสะอาดแผงโซลาร์อัตโนมัติ น้ำหนักเบา ไม่ทำให้แผงแตกร้าว ทำงานรวดเร็วบนหลังคาขนาดใหญ่</p>
-        </div>
-
-        <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
-          <div class="text-brand-orange text-3xl font-black mb-3">02</div>
-          <h4 class="font-bold text-base mb-2">Thermo Drone Inspection</h4>
-          <p class="text-xs text-slate-400 leading-relaxed">บินโดรนติดตั้งกล้องตรวจจับความร้อนความละเอียดสูง ตรวจหา Hotspot และ Diode ชำรุดได้ทั่วทุกแผงในเวลาไม่กี่นาที</p>
-        </div>
-
-        <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
-          <div class="text-brand-orange text-3xl font-black mb-3">03</div>
-          <h4 class="font-bold text-base mb-2">SCADA & AI Monitoring</h4>
-          <p class="text-xs text-slate-400 leading-relaxed">รวบรวมข้อมูลผ่าน Dashboard กลาง พร้อมระบบ AI วิเคราะห์ประสิทธิภาพรายวัน แจ้งเตือนฝ่ายบำรุงรักษาแบบ Real-time</p>
-        </div>
-
-        <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
-          <div class="text-brand-orange text-3xl font-black mb-3">04</div>
-          <h4 class="font-bold text-base mb-2">IV Curve & Electrical Test</h4>
-          <p class="text-xs text-slate-400 leading-relaxed">ตรวจสอบความสมบูรณ์ของสายเคเบิล DC/AC, ฉนวนกันความร้อน, ตรวจวัดกราวด์ และตู้สวิตช์บอร์ดตามมาตรฐาน วสท.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 10. Contact & Footer -->
-  <footer id="contact" class="bg-brand-navy text-slate-400 pt-16 pb-12 text-xs border-t border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
-      <div class="md:col-span-1">
-        <span class="text-2xl font-bold text-white block mb-3">SOLAR <span class="text-brand-orange">PPM</span></span>
-        <p class="text-slate-400 leading-relaxed mb-4">
-          ผู้นำด้านระบบไฟฟ้าพลังงานแสงอาทิตย์ครบวงจร มาตรฐานโรงงานผลิตแผงของคนไทย บริการครอบคลุมทั่วประเทศ
-        </p>
-        <span class="text-slate-500">ISO 9001 | ISO 14001 | มอก. | MiT</span>
-      </div>
-
-      <div>
-        <h5 class="text-white font-semibold text-sm mb-3">สำนักงานใหญ่</h5>
-        <p class="leading-relaxed">
-          33-35 ถนนพิษณุโลก แขวงดุสิต เขตดุสิต<br>
-          กรุงเทพมหานคร 10300 ประเทศไทย<br>
-          โทรศัพท์: 02-628-6100 ต่อ 801
-        </p>
-      </div>
-
-      <div>
-        <h5 class="text-white font-semibold text-sm mb-3">โรงงานผลิตแผงโซลาร์เซลล์</h5>
-        <p class="leading-relaxed">
-          17/9-10 ม.3 ต.หนองข้างคอก<br>
-          อ.เมือง จ.ชลบุรี 20000 ประเทศไทย<br>
-          สายด่วนวิศวกรรม: 082-347-3338
-        </p>
-      </div>
-
-      <div>
-        <h5 class="text-white font-semibold text-sm mb-3">ช่องทางติดต่อ</h5>
-        <p class="leading-relaxed mb-2">
-          Email: epc1@solarppm.com<br>
-          Line ID: @solarppm<br>
-          เวลาทำการ: จันทร์ - ศุกร์ (08.30 - 17.30 น.)
-        </p>
-      </div>
-    </div>
-
-    <div class="max-w-7xl mx-auto px-4 mt-12 pt-6 border-t border-slate-800 text-center text-slate-500">
-      &copy; 2026 Solar PPM Co., Ltd. (Demo Preview Interface). Designed for Client Evaluation.
+    <div class="max-w-7xl mx-auto px-4 mt-8 pt-6 border-t border-slate-800 text-center text-xs text-slate-500">
+      &copy; 2026 Solar PPM Demo. Created for Client Presentation.
     </div>
   </footer>
 
-  <!-- Calculator Script (Real-time Engineering Equations) -->
+  <!-- ==============================
+       Scripts
+       ============================== -->
   <script>
-    let currentTariff = 'industrial'; // 'industrial' or 'commercial'
+    /* 1. จัดการเมนูมือถือ (เปิด-ปิด) */
+    const openMenuBtn = document.getElementById('openMenuBtn');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
 
-    function setTariff(type, el) {
-      currentTariff = type;
-      document.querySelectorAll('.tariff-btn').forEach(btn => {
-        btn.classList.remove('bg-brand-orange', 'text-white');
-        btn.classList.add('bg-slate-700', 'text-slate-300');
-      });
-      el.classList.add('bg-brand-orange', 'text-white');
-      el.classList.remove('bg-slate-700', 'text-slate-300');
-      runCalculator();
+    openMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.remove('hidden');
+      mobileMenu.classList.add('flex');
+      document.body.classList.add('no-scroll');
+    });
+
+    function closeMenu() {
+      mobileMenu.classList.add('hidden');
+      mobileMenu.classList.remove('flex');
+      document.body.classList.remove('no-scroll');
     }
 
+    closeMenuBtn.addEventListener('click', closeMenu);
+
+    /* 2. โปรแกรมคำนวณ Solar (Light Theme Logic) */
     function runCalculator() {
       const bill = parseFloat(document.getElementById('inputBill').value);
-      const dayRatio = parseFloat(document.getElementById('dayRatio').value);
+      const rate = parseFloat(document.getElementById('inputRate').value) || 4.7;
+      const dayRatio = parseFloat(document.getElementById('dayRatio').value) / 100;
+      const psh = parseFloat(document.getElementById('pshValue').value);
+      const panelWatt = parseFloat(document.getElementById('panelWatt').value);
       
-      // Update Slider Label
       document.getElementById('dispBill').innerText = '฿' + bill.toLocaleString();
 
-      // ค่าไฟเฉลี่ยต่อหน่วย
-      const unitRate = currentTariff === 'industrial' ? 4.15 : 4.45;
-      
-      // หน่วยไฟที่ใช้ต่อเดือน
-      const monthlyUnits = bill / unitRate;
-      
-      // สัดส่วนหน่วยไฟที่ใช้ช่วงกลางวัน
-      const daytimeUnits = monthlyUnits * dayRatio;
-      
-      // แดดเฉลี่ยต่อวันในไทย 4 ชั่วโมง, 30 วัน/เดือน
-      // Capacity (kWp) = Daytime Units / (4 hrs * 30 days)
-      let capacity = Math.round(daytimeUnits / (4 * 30));
-      if (capacity < 10) capacity = 10;
+      const monthlyKwh = bill / rate;
+      const dailyKwh = monthlyKwh / 30;
+      const targetDailyKwh = dailyKwh * dayRatio;
 
-      // พื้นที่หลังคา: เฉลี่ย 5 ตร.ม. ต่อ 1 kWp
-      const roofArea = capacity * 5;
+      const exactKwpNeeded = targetDailyKwh / (psh * 0.8);
+      let numPanels = Math.ceil((exactKwpNeeded * 1000) / panelWatt);
+      if(numPanels < 4) numPanels = 4; // ติดตั้งขั้นต่ำ 4 แผง
 
-      // กำลังผลิตไฟฟ้าต่อปี (kWh/year) = capacity * 4 hrs * 365 days
-      const yearlyKwh = Math.round(capacity * 4 * 365);
+      const actualKwp = (numPanels * panelWatt) / 1000;
+      const roofArea = numPanels * 2.5;
 
-      // ผลประหยัดค่าไฟต่อปี (บาท)
-      const yearlySaving = Math.round(yearlyKwh * unitRate);
+      const monthlyProduction = actualKwp * psh * 30 * 0.8;
+      const monthlySavings = monthlyProduction * rate;
+      const yearlySavings = monthlySavings * 12;
 
-      // ต้นทุนติดตั้ง EPC โดยประมาณ (ยิ่งขนาดใหญ่ ต้นทุนต่อ kWp ยิ่งลด)
       let costPerKwp = 28000;
-      if (capacity > 100) costPerKwp = 24000;
-      if (capacity > 500) costPerKwp = 21000;
-      const totalSystemCost = capacity * costPerKwp;
+      if (actualKwp > 15) costPerKwp = 25000;
+      if (actualKwp > 50) costPerKwp = 22000;
+      const totalSystemCost = actualKwp * costPerKwp;
 
-      // ระยะเวลาคืนทุน (ปี)
-      const payback = (totalSystemCost / yearlySaving).toFixed(1);
+      let payback = totalSystemCost / yearlySavings;
+      if (payback > 10) payback = 9.9; 
 
-      // ผลประหยัดสุทธิ 25 ปี (หักค่าเสื่อมประสิทธิภาพแผง 0.5%/ปี เฉลี่ยคงที่ 90%)
-      const saving25YearsMb = ((yearlySaving * 25 * 0.90) / 1000000).toFixed(2);
-
-      // ประหยัดภาษีจาก BOI 50% ของเงินลงทุน
-      const boiSaving = Math.round(totalSystemCost * 0.50);
-
-      // Render Outputs
-      document.getElementById('resCapacity').innerText = capacity.toLocaleString();
+      // แสดงผลลัพธ์
+      document.getElementById('resPanels').innerText = numPanels.toLocaleString();
+      document.getElementById('resCapacity').innerText = actualKwp.toFixed(1);
       document.getElementById('resArea').innerText = roofArea.toLocaleString();
-      document.getElementById('resEnergyYear').innerText = yearlyKwh.toLocaleString();
-      document.getElementById('resSavingYear').innerText = '฿' + yearlySaving.toLocaleString();
-      document.getElementById('resSaving25').innerText = '฿' + saving25YearsMb + ' ลบ.';
-      document.getElementById('resPayback').innerText = payback;
-      document.getElementById('resBoiSaving').innerText = '฿' + boiSaving.toLocaleString();
+      
+      document.getElementById('resMonthlyKwh').innerText = Math.round(monthlyProduction).toLocaleString();
+      document.getElementById('resMonthlySave').innerText = '฿' + Math.round(monthlySavings).toLocaleString();
+      document.getElementById('resYearlySave').innerText = '฿' + Math.round(yearlySavings).toLocaleString();
+      document.getElementById('resPayback').innerText = payback.toFixed(1);
     }
 
-    // Run Once on Load
+    // รันการคำนวณครั้งแรกเมื่อเปิดเว็บ
     window.addEventListener('DOMContentLoaded', runCalculator);
   </script>
 </body>
