@@ -15,48 +15,48 @@
         extend: {
           fontFamily: { kanit: ['Kanit', 'sans-serif'] },
           colors: {
-            brand: { navy: '#0b192c', blue: '#1e3e62', orange: '#ff6500', yellow: '#facc15' }
+            brand: { navy: '#0f172a', primary: '#0284c7', orange: '#f97316', softblue: '#e0f2fe' }
           }
         }
       }
     }
   </script>
   <style> 
-    body { font-family: 'Kanit', sans-serif; background-color: #f8fafc; color: #1e293b; } 
+    body { font-family: 'Kanit', sans-serif; background-color: #f1f5f9; color: #334155; } 
     .no-scroll { overflow: hidden; }
   </style>
 </head>
-<body class="antialiased selection:bg-brand-orange selection:text-white">
+<body class="antialiased selection:bg-brand-primary selection:text-white">
 
   <!-- ==============================
        Modal ออกใบเสนอราคาอัตโนมัติ
        ============================== -->
-  <div id="quoteModal" class="fixed inset-0 z-[200] hidden items-center justify-center bg-black/60 p-4 backdrop-blur-sm text-slate-800">
+  <div id="quoteModal" class="fixed inset-0 z-[200] hidden items-center justify-center bg-black/50 p-4 backdrop-blur-sm text-slate-800">
     <div class="bg-white w-full max-w-lg rounded-3xl p-6 sm:p-8 shadow-2xl relative border border-slate-100">
       <button onclick="closeQuoteModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 bg-slate-100 p-2 rounded-full">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
 
       <div class="text-center mb-6">
-        <div class="w-12 h-12 bg-orange-100 text-brand-orange rounded-2xl flex items-center justify-center mx-auto mb-2 font-black text-xl">
+        <div class="w-12 h-12 bg-sky-100 text-brand-primary rounded-2xl flex items-center justify-center mx-auto mb-2 font-black text-xl">
           ⚡
         </div>
-        <h3 class="text-xl font-bold text-brand-navy">ใบเสนอราคาประเมินเบื้องต้น</h3>
+        <h3 class="text-xl font-bold text-slate-800">ใบเสนอราคาประเมินเบื้องต้น</h3>
         <p class="text-xs text-slate-500">DJP Future Energy x Insider System - One Stop Service</p>
       </div>
 
       <div class="bg-slate-50 rounded-2xl p-4 space-y-3 text-xs sm:text-sm mb-6 border border-slate-200">
         <div class="flex justify-between border-b border-slate-200 pb-2">
           <span class="text-slate-500">ระดับค่าไฟในระบบ:</span>
-          <span id="modalTier" class="font-bold text-brand-orange">อัตราก้าวหน้า 3 ระดับ</span>
+          <span id="modalTier" class="font-bold text-brand-primary">อัตราก้าวหน้า 3 ระดับ</span>
         </div>
         <div class="flex justify-between border-b border-slate-200 pb-2">
           <span class="text-slate-500">ขนาดระบบที่เหมาะสม:</span>
-          <span id="modalCapacity" class="font-bold text-brand-navy">5 kWp</span>
+          <span id="modalCapacity" class="font-bold text-slate-800">5 kWp</span>
         </div>
         <div class="flex justify-between border-b border-slate-200 pb-2">
           <span class="text-slate-500">จำนวนแผงโซลาร์เซลล์:</span>
-          <span id="modalPanels" class="font-bold text-brand-navy">9 แผง</span>
+          <span id="modalPanels" class="font-bold text-slate-800">9 แผง</span>
         </div>
         <div class="flex justify-between border-b border-slate-200 pb-2">
           <span class="text-slate-500">ประหยัดค่าไฟต่อปี:</span>
@@ -64,18 +64,18 @@
         </div>
         <div class="flex justify-between border-b border-slate-200 pb-2">
           <span class="text-slate-500">ระยะเวลาคืนทุน:</span>
-          <span id="modalPayback" class="font-bold text-brand-orange">4.2 ปี</span>
+          <span id="modalPayback" class="font-bold text-brand-primary">4.2 ปี</span>
         </div>
         <div class="flex justify-between text-base pt-1">
-          <span class="font-bold text-brand-navy">งบลงทุนประเมิน:</span>
-          <span id="modalTotalCost" class="font-extrabold text-brand-navy">฿150,000</span>
+          <span class="font-bold text-slate-800">งบลงทุนประเมิน:</span>
+          <span id="modalTotalCost" class="font-extrabold text-slate-900">฿150,000</span>
         </div>
       </div>
 
       <form onsubmit="submitQuotationForm(event)" class="space-y-3">
-        <input type="text" id="clientName" placeholder="ชื่อ-นามสกุล / ชื่อบริษัท" required class="w-full bg-slate-100 border border-slate-300 text-xs rounded-xl p-3 focus:outline-none focus:border-brand-orange" />
-        <input type="tel" id="clientPhone" placeholder="เบอร์โทรศัพท์ติดต่อกลับ" required class="w-full bg-slate-100 border border-slate-300 text-xs rounded-xl p-3 focus:outline-none focus:border-brand-orange" />
-        <button type="submit" class="w-full bg-brand-orange hover:bg-orange-600 text-white font-bold text-xs py-3.5 rounded-xl transition shadow-lg uppercase tracking-wide">
+        <input type="text" id="clientName" placeholder="ชื่อ-นามสกุล / ชื่อบริษัท" required class="w-full bg-slate-100 border border-slate-300 text-xs rounded-xl p-3 focus:outline-none focus:border-brand-primary" />
+        <input type="tel" id="clientPhone" placeholder="เบอร์โทรศัพท์ติดต่อกลับ" required class="w-full bg-slate-100 border border-slate-300 text-xs rounded-xl p-3 focus:outline-none focus:border-brand-primary" />
+        <button type="submit" class="w-full bg-brand-primary hover:bg-sky-700 text-white font-bold text-xs py-3.5 rounded-xl transition shadow-lg uppercase tracking-wide">
           ยืนยันรับใบเสนอราคาผ่านทาง SMS / โทรกลับ
         </button>
       </form>
@@ -83,22 +83,21 @@
   </div>
 
   <!-- ==============================
-       Mobile Menu Drawer (เมนูมือถือตามภาพ)
+       Mobile Menu Drawer
        ============================== -->
   <div id="mobileMenu" class="fixed inset-0 z-[200] hidden flex-col bg-white overflow-y-auto text-slate-800">
-    <div class="bg-brand-navy text-white flex justify-between items-center px-4 h-16">
+    <div class="bg-slate-900 text-white flex justify-between items-center px-4 h-16">
       <span class="font-bold text-lg">เมนูหลัก (Menu)</span>
       <button onclick="toggleMobileMenu()" class="p-2">
         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
     </div>
     <div class="flex flex-col text-base font-medium divide-y divide-slate-100">
-      <a href="#" class="px-6 py-4 hover:bg-slate-50 text-brand-orange font-bold">โซล่าเซลล์ครบวงจร</a>
+      <a href="#" class="px-6 py-4 hover:bg-slate-50 text-brand-primary font-bold">โซล่าเซลล์ครบวงจร</a>
       <a href="#" class="px-6 py-4 hover:bg-slate-50">โซล่าเซลล์โรงงาน</a>
       <a href="#" class="px-6 py-4 hover:bg-slate-50">Inverter & Battery</a>
       <a href="#" class="px-6 py-4 hover:bg-slate-50">แผงโซลาร์เซลล์</a>
-      <a href="#calculator" class="px-6 py-4 hover:bg-slate-50 text-brand-orange font-bold" onclick="toggleMobileMenu()">โปรแกรมคำนวณค่าไฟ</a>
-      <a href="#portfolio" class="px-6 py-4 hover:bg-slate-50">ผลงาน</a>
+      <a href="#calculator" class="px-6 py-4 hover:bg-slate-50 text-brand-primary font-bold" onclick="toggleMobileMenu()">โปรแกรมคำนวณค่าไฟ</a>
       <a href="#about" class="px-6 py-4 hover:bg-slate-50">เกี่ยวกับเรา</a>
       <a href="#contact" class="px-6 py-4 hover:bg-slate-50">ติดต่อเรา</a>
     </div>
@@ -108,16 +107,16 @@
        Floating Contact & Click-to-Call Buttons
        ============================== -->
   <div class="fixed bottom-6 right-6 z-50 flex items-center gap-2">
-    <a href="tel:0656059949" class="bg-brand-orange text-white font-bold text-xs sm:text-sm px-4 py-3 rounded-full shadow-2xl flex items-center gap-2 hover:bg-orange-600 transition">
+    <a href="tel:0656059949" class="bg-brand-primary text-white font-bold text-xs sm:text-sm px-4 py-3 rounded-full shadow-2xl flex items-center gap-2 hover:bg-sky-700 transition">
       <svg class="w-4 h-4 animate-bounce" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
       <span>โทร 065-605-9949 (คุณภัค)</span>
     </a>
   </div>
 
   <!-- ==============================
-       Top Bar & Header (สไตล์ Insider System)
+       Top Bar & Header (โทนฟ้าอ่อนสบายตาตามภาพ)
        ============================== -->
-  <div class="bg-brand-orange text-white text-[11px] sm:text-xs py-2 px-4">
+  <div class="bg-sky-600 text-white text-[11px] sm:text-xs py-2 px-4">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
       <span class="font-medium">🕒 เวลาทำการ: จันทร์ - เสาร์ 08:30 - 17:30 น.</span>
       <a href="tel:0656059949" class="font-bold hover:underline">📞 สายด่วน: 065-605-9949 (คุณภัค)</a>
@@ -129,26 +128,26 @@
       
       <!-- Logo -->
       <a href="#" class="flex items-center space-x-2">
-        <div class="w-10 h-10 bg-brand-orange rounded-xl flex items-center justify-center text-white font-black text-xl shadow-md">
+        <div class="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center text-white font-black text-xl shadow-md">
           ⚡
         </div>
         <div>
-          <span class="text-xl font-black tracking-tight text-brand-navy leading-none block">INSIDER <span class="text-brand-orange">SYSTEM</span></span>
+          <span class="text-xl font-black tracking-tight text-slate-800 leading-none block">INSIDER <span class="text-brand-primary">SYSTEM</span></span>
           <span class="text-[9px] font-semibold tracking-wider text-slate-500 block uppercase">by DJP Future Energy</span>
         </div>
       </a>
       
-      <!-- Search Bar ตรงกลาง (อิงตามภาพ 1000033130.jpg) -->
+      <!-- Search Bar -->
       <div class="hidden md:flex flex-1 max-w-md mx-4">
         <div class="relative w-full">
-          <input type="text" placeholder="ค้นหาชื่อรุ่นอุปกรณ์, อินเวอร์เตอร์, แผงโซล่าเซลล์..." class="w-full bg-slate-100 border border-slate-300 text-xs rounded-full py-2.5 pl-4 pr-10 focus:outline-none focus:border-brand-orange text-slate-800" />
+          <input type="text" placeholder="ค้นหาชื่อรุ่นอุปกรณ์, อินเวอร์เตอร์, แผงโซล่าเซลล์..." class="w-full bg-slate-100 border border-slate-300 text-xs rounded-full py-2.5 pl-4 pr-10 focus:outline-none focus:border-brand-primary text-slate-800" />
           <svg class="w-4 h-4 text-slate-400 absolute right-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
         </div>
       </div>
 
       <!-- Hamburger Menu Button -->
       <button onclick="toggleMobileMenu()" class="bg-slate-100 hover:bg-slate-200 p-2.5 rounded-xl text-slate-700 flex items-center gap-2 font-semibold text-xs">
-        <svg class="w-6 h-6 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
         <span class="hidden sm:inline">เมนูหลัก</span>
       </button>
 
@@ -156,21 +155,21 @@
   </header>
 
   <!-- ==============================
-       Hero Section (สไตล์สว่างสะอาดตา)
+       Hero Section (โทนสีสว่างสบายตา)
        ============================== -->
-  <section class="relative bg-gradient-to-b from-blue-50 to-white py-16 border-b border-slate-200 text-slate-800">
+  <section class="relative bg-gradient-to-b from-sky-50 to-white py-16 border-b border-slate-200 text-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
-      <span class="bg-brand-orange/10 text-brand-orange text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider mb-4 inline-block">
+      <span class="bg-sky-100 text-brand-primary text-xs font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider mb-4 inline-block">
         One Stop Service ทุกระบบจบในที่เดียว
       </span>
-      <h1 class="text-4xl sm:text-5xl font-extrabold text-brand-navy tracking-tight leading-tight mb-4">
-        จำหน่ายและติดตั้ง <span class="text-brand-orange">โซลาร์เซลล์ ครบวงจร</span> ทั่วประเทศ
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+        จำหน่ายและติดตั้ง <span class="text-brand-primary">โซลาร์เซลล์ ครบวงจร</span> ทั่วประเทศ
       </h1>
       <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
         บริการออกแบบ ติดตั้งระบบโซล่าเซลล์สำหรับบ้านพักอาศัย โฮมออฟฟิศ และโรงงานอุตสาหกรรม โดยทีมวิศวกรผู้เชี่ยวชาญ พร้อมอุปกรณ์มาตรฐานระดับโลก
       </p>
       <div class="flex justify-center gap-3">
-        <a href="#calculator" class="bg-brand-orange hover:bg-orange-600 text-white font-bold px-8 py-3.5 rounded-xl shadow-lg transition text-sm">
+        <a href="#calculator" class="bg-brand-primary hover:bg-sky-700 text-white font-bold px-8 py-3.5 rounded-xl shadow-lg transition text-sm">
           คำนวณค่าไฟ & ออกใบเสนอราคา
         </a>
       </div>
@@ -178,13 +177,13 @@
   </section>
 
   <!-- ==============================
-       Main Calculator Section (Puma Style Tier 1-3)
+       Main Calculator Section
        ============================== -->
   <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
     
     <!-- Title Header -->
     <div class="text-center mb-8">
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-navy mb-2">เครื่องคำนวณโซลาร์เซลล์อัจฉริยะ (Solar Calculator)</h2>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2">เครื่องคำนวณโซลาร์เซลล์อัจฉริยะ (Solar Calculator)</h2>
       <p class="text-slate-500 text-xs tracking-wider uppercase font-semibold">อ้างอิงอัตราใหม่ ก้าวหน้า 3 ระดับ · NET BILLING 2.20 บ./หน่วย</p>
     </div>
 
@@ -197,11 +196,11 @@
         <p class="text-[11px] text-slate-400 mt-1">อุดหนุน - ลดลง ~20%</p>
       </div>
 
-      <div class="bg-white border-2 border-brand-orange p-5 rounded-2xl text-center shadow-md relative">
-        <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-orange text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase">ยอดนิยม</span>
-        <span class="bg-amber-100 text-amber-700 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">TIER 2</span>
+      <div class="bg-white border-2 border-brand-primary p-5 rounded-2xl text-center shadow-md relative">
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-primary text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase">ยอดนิยม</span>
+        <span class="bg-sky-100 text-sky-800 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">TIER 2</span>
         <p class="text-xs text-slate-500 mt-3">201 - 400 หน่วย / เดือน</p>
-        <p class="text-2xl font-black text-amber-600 mt-1">3.95 ฿</p>
+        <p class="text-2xl font-black text-brand-primary mt-1">3.95 ฿</p>
         <p class="text-[11px] text-slate-400 mt-1">ปกติ - ยังได้ส่วนลด 200 หน่วยแรก</p>
       </div>
 
@@ -218,24 +217,24 @@
       
       <!-- STEP 0: TIER CHECK -->
       <div>
-        <h3 class="text-brand-orange font-bold text-sm mb-3">// STEP 0 - TIER CHECK (ตรวจสอบระดับค่าไฟ)</h3>
+        <h3 class="text-brand-primary font-bold text-sm mb-3">// STEP 0 - TIER CHECK (ตรวจสอบระดับค่าไฟ)</h3>
         <label class="text-xs text-slate-600 block mb-2 font-semibold">ค่าไฟเฉลี่ยต่อเดือน (บาท รวม VAT 7%):</label>
-        <input id="inputBill" type="number" value="8000" class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-base rounded-xl p-3.5 focus:border-brand-orange focus:outline-none" oninput="calculateAll()">
+        <input id="inputBill" type="number" value="8000" class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-base rounded-xl p-3.5 focus:border-brand-primary focus:outline-none" oninput="calculateAll()">
       </div>
 
       <!-- STEP 1: SYSTEM SIZE CONFIG -->
       <div class="border-t border-slate-100 pt-5 space-y-4">
-        <h3 class="text-brand-orange font-bold text-sm">// STEP 1 - SYSTEM SIZE (คำนวณจำนวนแผง)</h3>
+        <h3 class="text-brand-primary font-bold text-sm">// STEP 1 - SYSTEM SIZE (คำนวณจำนวนแผง)</h3>
         
         <div class="grid sm:grid-cols-2 gap-4">
           <div>
             <label class="text-xs text-slate-600 block mb-1 font-semibold">อัตราค่าไฟเฉลี่ย (บาท/หน่วย)</label>
-            <input id="inputRate" type="number" step="0.05" value="3.95" class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-xs rounded-xl p-3 focus:border-brand-orange focus:outline-none" onchange="calculateAll()">
+            <input id="inputRate" type="number" step="0.05" value="3.95" class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-xs rounded-xl p-3 focus:border-brand-primary focus:outline-none" onchange="calculateAll()">
             <span class="text-[10px] text-slate-400 mt-1 block">T1: 2.80 | T2: 3.95 | T3: 5.10</span>
           </div>
           <div>
             <label class="text-xs text-slate-600 block mb-1 font-semibold">กำลังผลิตแผง (Watt)</label>
-            <select id="panelWatt" class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-xs rounded-xl p-3 focus:border-brand-orange focus:outline-none" onchange="calculateAll()">
+            <select id="panelWatt" class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-xs rounded-xl p-3 focus:border-brand-primary focus:outline-none" onchange="calculateAll()">
               <option value="580" selected>แผง 580W (มาตรฐาน)</option>
               <option value="600">แผง 600W (Tier 1)</option>
             </select>
@@ -247,24 +246,24 @@
           <div>
             <div class="flex justify-between text-xs text-slate-600 mb-1 font-semibold">
               <span>ใช้ไฟกลางวัน จ-ศ (09:00-15:00):</span>
-              <span id="monFriText" class="text-brand-orange font-bold">50%</span>
+              <span id="monFriText" class="text-brand-primary font-bold">50%</span>
             </div>
-            <input id="monFriSlider" type="range" min="10" max="100" value="50" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-orange" oninput="updateSliderText()">
+            <input id="monFriSlider" type="range" min="10" max="100" value="50" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-primary" oninput="updateSliderText()">
           </div>
 
           <div>
             <div class="flex justify-between text-xs text-slate-600 mb-1 font-semibold">
               <span>ใช้ไฟกลางวัน ส-อา (09:00-15:00):</span>
-              <span id="satSunText" class="text-brand-orange font-bold">70%</span>
+              <span id="satSunText" class="text-brand-primary font-bold">70%</span>
             </div>
-            <input id="satSunSlider" type="range" min="10" max="100" value="70" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-orange" oninput="updateSliderText()">
+            <input id="satSunSlider" type="range" min="10" max="100" value="70" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-primary" oninput="updateSliderText()">
           </div>
         </div>
 
         <div class="grid sm:grid-cols-2 gap-4">
           <div>
             <label class="text-xs text-slate-600 block mb-1 font-semibold">ชั่วโมงแดดจัด (Peak Sun Hours - PSH)</label>
-            <select id="pshValue" class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-xs rounded-xl p-3 focus:border-brand-orange focus:outline-none" onchange="calculateAll()">
+            <select id="pshValue" class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-xs rounded-xl p-3 focus:border-brand-primary focus:outline-none" onchange="calculateAll()">
               <option value="4.8">กทม. / ภาคกลาง (4.8 ชม.)</option>
               <option value="5.1">ภาคอีสาน (5.1 ชม.)</option>
               <option value="4.6">ภาคใต้ (4.6 ชม.)</option>
@@ -272,7 +271,7 @@
           </div>
           <div>
             <label class="text-xs text-slate-600 block mb-1 font-semibold">ระบบไฟฟ้า</label>
-            <select class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-xs rounded-xl p-3 focus:border-brand-orange focus:outline-none">
+            <select class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-xs rounded-xl p-3 focus:border-brand-primary focus:outline-none">
               <option>1 Phase (บ้านพักทั่วไป)</option>
               <option>3 Phase (โรงงาน/กิจการ)</option>
             </select>
@@ -282,38 +281,38 @@
 
       <!-- STEP 2: ROI ANALYSIS -->
       <div class="border-t border-slate-100 pt-5 space-y-4">
-        <h3 class="text-brand-orange font-bold text-sm">// STEP 2 - ROI ANALYSIS (ประหยัดและคืนทุน)</h3>
+        <h3 class="text-brand-primary font-bold text-sm">// STEP 2 - ROI ANALYSIS (ประหยัดและคืนทุน)</h3>
         
         <div class="flex items-center gap-3 bg-slate-50 p-4 rounded-xl border border-slate-200">
-          <input type="checkbox" id="netBillingCheck" class="w-5 h-5 accent-brand-orange rounded cursor-pointer" onchange="calculateAll()">
+          <input type="checkbox" id="netBillingCheck" class="w-5 h-5 accent-brand-primary rounded cursor-pointer" onchange="calculateAll()">
           <label for="netBillingCheck" class="text-xs text-slate-700 cursor-pointer">
-            <strong class="text-brand-orange">Net Billing</strong> – ขายไฟส่วนเกินคืนการไฟฟ้า (2.20 THB/UNIT · สัญญา 10 ปี · สูงสุด 5 kWp)
+            <strong class="text-brand-primary">Net Billing</strong> – ขายไฟส่วนเกินคืนการไฟฟ้า (2.20 THB/UNIT · สัญญา 10 ปี · สูงสุด 5 kWp)
           </label>
         </div>
 
         <!-- ผลลัพธ์การคำนวณแบบการ์ด -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-          <div class="bg-blue-50/60 p-4 rounded-xl border border-blue-100 text-center">
+          <div class="bg-sky-50/60 p-4 rounded-xl border border-sky-100 text-center">
             <span class="text-[10px] text-slate-500 block mb-1">จำนวนแผงแนะนำ</span>
-            <span id="resPanels" class="text-2xl font-extrabold text-brand-orange">10</span> <span class="text-xs text-slate-500">แผง</span>
+            <span id="resPanels" class="text-2xl font-extrabold text-brand-primary">10</span> <span class="text-xs text-slate-500">แผง</span>
           </div>
-          <div class="bg-blue-50/60 p-4 rounded-xl border border-blue-100 text-center">
+          <div class="bg-sky-50/60 p-4 rounded-xl border border-sky-100 text-center">
             <span class="text-[10px] text-slate-500 block mb-1">ขนาดระบบ</span>
-            <span id="resCapacity" class="text-2xl font-extrabold text-brand-navy">5.8</span> <span class="text-xs text-slate-500">kWp</span>
+            <span id="resCapacity" class="text-2xl font-extrabold text-slate-900">5.8</span> <span class="text-xs text-slate-500">kWp</span>
           </div>
-          <div class="bg-blue-50/60 p-4 rounded-xl border border-blue-100 text-center">
+          <div class="bg-sky-50/60 p-4 rounded-xl border border-sky-100 text-center">
             <span class="text-[10px] text-slate-500 block mb-1">ประหยัดต่อปี</span>
             <span id="resYearlySave" class="text-xl font-extrabold text-emerald-600">฿35,000</span>
           </div>
-          <div class="bg-blue-50/60 p-4 rounded-xl border border-blue-100 text-center">
+          <div class="bg-sky-50/60 p-4 rounded-xl border border-sky-100 text-center">
             <span class="text-[10px] text-slate-500 block mb-1">ระยะเวลาคืนทุน</span>
-            <span id="resPayback" class="text-xl font-extrabold text-brand-orange">4.2</span> <span class="text-xs text-slate-500">ปี</span>
+            <span id="resPayback" class="text-xl font-extrabold text-brand-primary">4.2</span> <span class="text-xs text-slate-500">ปี</span>
           </div>
         </div>
       </div>
 
       <!-- ปุ่มออกใบเสนอราคา -->
-      <button onclick="openQuoteModal()" class="w-full bg-brand-orange hover:bg-orange-600 text-white font-bold text-sm py-4 rounded-xl shadow-lg transition uppercase tracking-wider flex items-center justify-center gap-2 mt-4">
+      <button onclick="openQuoteModal()" class="w-full bg-brand-primary hover:bg-sky-700 text-white font-bold text-sm py-4 rounded-xl shadow-lg transition uppercase tracking-wider flex items-center justify-center gap-2 mt-4">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
         ออกใบเสนอราคา / ส่งผลประเมินทันที
       </button>
@@ -322,9 +321,9 @@
   </section>
 
   <!-- ==============================
-       Footer (ข้อมูลบริษัท DJP & Insider System)
+       Footer
        ============================== -->
-  <footer id="contact" class="bg-brand-navy text-slate-300 py-12 text-sm border-t-4 border-brand-orange">
+  <footer id="contact" class="bg-slate-900 text-slate-300 py-12 text-sm border-t-4 border-brand-primary">
     <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 text-center md:text-left">
       <div>
         <p class="text-white font-bold text-xl mb-2">INSIDER SYSTEM x DJP</p>
@@ -341,7 +340,7 @@
       <div>
         <h5 class="text-white font-bold mb-3 text-base">ติดต่อด่วน</h5>
         <p class="text-xs space-y-2 text-slate-400">
-          <span class="block">📞 <a href="tel:0656059949" class="text-brand-orange font-bold hover:underline">065-605-9949 (คุณภัค)</a></span>
+          <span class="block">📞 <a href="tel:0656059949" class="text-sky-400 font-bold hover:underline">065-605-9949 (คุณภัค)</a></span>
           <span class="block">☎️ โทร. 062-564-4043</span>
           <span class="block">🌐 www.djp-fe.com</span>
         </p>
